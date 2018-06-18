@@ -87,7 +87,7 @@ public class FuncionarioController {
         
 
         //alterar:: criando objeto
-        Pessoa pessoa = new Pessoa();
+        Funcionario funcionario = new Funcionario();
         pessoa.setNome(nome);
         pessoa.setEmail(email);
         pessoa.setCpf(cpf);

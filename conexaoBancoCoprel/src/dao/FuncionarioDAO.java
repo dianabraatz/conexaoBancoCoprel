@@ -22,7 +22,7 @@ public class FuncionarioDAO {
     
     public boolean adicionar(Funcionario objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO pessoa (nome, email, cpf) VALUES (?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO funcionario (nome, email, cpf) VALUES (?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             //definindo as interrogações (uma linha para cada ? do SQL)
@@ -62,7 +62,7 @@ public class FuncionarioDAO {
 
     public boolean excluir(Funcionario objeto) {
         try {
-            String sql = " DELETE FROM pessoa WHERE id = ? "; //alterar a tabela e a chave primária no WHERE
+            String sql = " DELETE FROM funcionario WHERE id = ? "; //alterar a tabela e a chave primária no WHERE
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             pstmt.setInt(1, objeto.getId()); //alterar conforme a chave primária
@@ -77,7 +77,7 @@ public class FuncionarioDAO {
     }
 
     public List<Funcionario> selecionar() {
-        String sql = "SELECT id, nome FROM pessoa ORDER BY nome"; //alterar tabela e atributos
+        String sql = "SELECT id, nome FROM funcionario ORDER BY nome"; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();
