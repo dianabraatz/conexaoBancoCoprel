@@ -31,10 +31,8 @@ public class FuncionarioController {
             if (!objetos.isEmpty()) {
                 for (Funcionario objeto : objetos) {//alterar a classe
                     //alterar definir o que vai em cada linha - 1 linha para cada atributo exibido na tabela
-                    linhas[0] = objeto.getId();  //alterar
+                    linhas[0] = objeto.getNumeroRegistro();  //alterar
                     linhas[1] = objeto.getNome(); //alterar
-                    linhas[2] = objeto.getEmail();  //alterar
-                    linhas[3] = objeto.getCpf();
                     
                     model.addRow(linhas);
                 }
@@ -59,19 +57,17 @@ public class FuncionarioController {
         //alterar obtendo os valores da tabela
         String codigo = tela.tabela.getValueAt(linhaSelecionada, 0).toString(); //está na coluna 0
         String nome = tela.tabela.getValueAt(linhaSelecionada, 1).toString(); //está na coluna 1
-        String email = tela.tabela.getValueAt(linhaSelecionada, 2).toString(); //está na coluna 0
         Long cpf = Long.parseLong(tela.tabela.getValueAt(linhaSelecionada, 3).toString()); //está na coluna 1
 
         //alterar setando os valores dos campos
-        tela.jtfCodigo.setText(codigo);
+        tela.jtfnumeroRegistro.setText(codigo);
         tela.jtfNome.setText(nome);
-        tela.jtfEmail.setText(codigo);
         tela.jtfCPF.setText(nome);
 
         // habilita/desabilita botões
         tela.jbtAdicionar.setEnabled(false);
         tela.jbtAlterar.setEnabled(true);
-        tela.jbtExcluir.setEnabled(true); */
+        tela.jbtExcluir.setEnabled(true);*/
     }
 
     public static void adicionar(Login tela) {
@@ -87,10 +83,9 @@ public class FuncionarioController {
         
 
         //alterar:: criando objeto
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(nome);
-        pessoa.setEmail(email);
-        pessoa.setCpf(cpf);
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNome(nome);
+        funcionario.setCpf(cpf);
 
         //alterar:: adicionando o objeto no banco de dados
         FuncionarioDAO dao = new FuncionarioDAO();
