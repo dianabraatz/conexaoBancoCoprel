@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
-import view.AdicionarFuncionario;
+import view.Login;
 
 /**
  *
@@ -53,7 +53,7 @@ public class FuncionarioController {
         }
     }
 
-    public static void atualizaCampos(AdicionarFuncionario tela) {
+    public static void atualizaCampos(Login tela) {
         /*int linhaSelecionada = tela.tabela.getSelectedRow();
 
         //alterar obtendo os valores da tabela
@@ -74,7 +74,7 @@ public class FuncionarioController {
         tela.jbtExcluir.setEnabled(true); */
     }
 
-    public static void adicionar(AdicionarFuncionario tela) {
+    public static void adicionar(Login tela) {
         //verificando se os campos estão preenchidos
         /*if (!verificarCampos(tela)) {
             return; //algum campo não está preenchido corretamente
@@ -106,7 +106,7 @@ public class FuncionarioController {
 
     }
 
-    public static void alterar(AdicionarFuncionario tela) {
+    public static void alterar(Login tela) {
         //verificando se os campos estão preenchidos
         /*if (!verificarCampos(tela)) {
             return; //algum campo não está preenchido corretamente
@@ -136,7 +136,7 @@ public class FuncionarioController {
         }*/
     }
     
-    public static void excluir(AdicionarFuncionario tela) {
+    public static void excluir(Login tela) {
         //verificando se usuário tem certeza
         int result = JOptionPane.showConfirmDialog(tela, "Tem certeza que deseja excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
         if (result!=JOptionPane.YES_OPTION) {
@@ -185,7 +185,7 @@ public class FuncionarioController {
      *
      * @param tela
      */
-    public static void limparCampos(AdicionarFuncionario tela) {
+    public static void limparCampos(Login tela) {
         //alterar:: limpando os campos
         /*tela.jtfCodigo.setText("");
         tela.jtfNome.setText("");
