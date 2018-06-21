@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public class Funcionario {
     private Integer numeroRegistro;
+    private String senha;
     private String nome;
     private String rg;
     private Long cpf;
@@ -28,6 +29,16 @@ public class Funcionario {
     public void setNumeroRegistro(Integer numeroRegistro) {
         this.numeroRegistro = numeroRegistro;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
 
     public String getNome() {
         return nome;

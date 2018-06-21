@@ -72,12 +72,12 @@ public class FuncionarioController {
 
     public static void adicionar(Login tela) {
         //verificando se os campos estão preenchidos
-        /*if (!verificarCampos(tela)) {
+        if (!verificarCampos(tela)) {
             return; //algum campo não está preenchido corretamente
         }
 
         //alterar:: obtendo os valores preenchidos
-        String nome = tela.jtfNome.getText().trim();
+        String nome = tela.jtf.getText().trim();
         String email = tela.jtfEmail.getText().trim();
         Long cpf = Long.parseLong(tela.jtfCPF.getText().trim());
         
