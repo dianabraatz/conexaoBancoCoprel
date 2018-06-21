@@ -28,6 +28,10 @@ public class MenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jmnList = new javax.swing.JMenu();
         jmiAnimal = new javax.swing.JMenuItem();
@@ -36,6 +40,42 @@ public class MenuView extends javax.swing.JFrame {
         setTitle("Exemplo de Software");
         setLocationByPlatform(true);
         setResizable(false);
+
+        jButton1.setText("Abrir");
+
+        jButton2.setText("Fechar");
+
+        jLabel1.setText("Ponto");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(160, 160, 160))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(73, 73, 73))
+        );
+
+        desktopPane.add(jPanel1);
+        jPanel1.setBounds(340, 210, 360, 190);
 
         jmnList.setMnemonic('e');
         jmnList.setText("Cadastros");
@@ -72,7 +112,7 @@ public class MenuView extends javax.swing.JFrame {
 
     private void jmiAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAnimalActionPerformed
 
-        AdicionarFuncionario dialog = new AdicionarFuncionario(this, true); //alterar
+        FuncionarioView dialog = new FuncionarioView(this, true); //alterar
         dialog.setVisible(true); //alterar
     }//GEN-LAST:event_jmiAnimalActionPerformed
 
@@ -116,6 +156,10 @@ public class MenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jmiAnimal;
     private javax.swing.JMenu jmnList;
     private javax.swing.JMenuBar menuBar;
