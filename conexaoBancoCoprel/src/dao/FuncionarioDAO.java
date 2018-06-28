@@ -6,6 +6,7 @@
 package dao;
 
 import config.Conexao;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,13 +28,14 @@ public class FuncionarioDAO {
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             //definindo as interrogações (uma linha para cada ? do SQL)
             pstmt.setInt(1, objeto.getNumeroRegistro()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setDate(2, objeto.getDataNascimento()); 
+            pstmt.setDate(2, new Date(objeto.getDataNascimento().getTime()));
+            //pstmt.setDate(2, objeto.getDataNascimento()); 
             pstmt.setString(3, objeto.getNome()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
             pstmt.setString(4, objeto.getCtps());
             pstmt.setString(5, objeto.getRg());
             pstmt.setLong(6, objeto.getCpf()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
             pstmt.setString(7, objeto.getCnh());
-            pstmt.setDate(8, objeto.getDataAdmissao());             
+            pstmt.setDate(8, new Date(objeto.getDataNascimento().getTime()));         
             
             pstmt.executeUpdate(); //executando
             return true;
@@ -52,13 +54,13 @@ public class FuncionarioDAO {
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
 
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setDate(1, objeto.getDataNascimento()); 
+            pstmt.setDate(1, new Date(objeto.getDataNascimento().getTime())); 
             pstmt.setString(2, objeto.getNome()); 
             pstmt.setString(3, objeto.getCtps());
             pstmt.setString(4, objeto.getRg());
             pstmt.setLong(5, objeto.getCpf()); 
             pstmt.setString(6, objeto.getCnh());
-            pstmt.setDate(7, objeto.getDataAdmissao());
+            pstmt.setDate(7, new Date(objeto.getDataNascimento().getTime()));   
             pstmt.setInt(8, objeto.getNumeroRegistro());
 
             pstmt.executeUpdate(); //executando
@@ -99,6 +101,11 @@ public class FuncionarioDAO {
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
                 objeto.setNumeroRegistro(rs.getInt("numeroRegistro")); //alterar
                 objeto.setNome(rs.getString("nome"));  //alterar
+                objeto.setRg(rs.getLong("rg"));
+                objeto.setCpf(rs.getLong("cpf"));
+                objeto.setDataNascimento(rs.getDate("dataNascimento"));
+                objeto.setCtps(rs.getString);
+                
 
                 lista.add(objeto);
             }

@@ -82,7 +82,7 @@ public class FuncionarioController {
         String nome = tela.jtfNome.getText().trim();
         String rg = tela.jtfRG.getText().trim();
         Long cpf = Long.parseLong(tela.jftfCPF.getText().trim());
-        //Date dataNascimento = formato.parse(tela.jftfDataNascimento.getText().trim());
+        //String dataNascimento = tela.jftfDataNascimento.getText().trim();
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();
         //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());        
@@ -123,7 +123,7 @@ public class FuncionarioController {
         String nome = tela.jtfNome.getText().trim();
         String rg = tela.jtfRG.getText().trim();
         Long cpf = Long.parseLong(tela.jftfCPF.getText().trim());
-        //Date dataNascimento = formato.parse(tela.jftfDataNascimento.getText().trim());
+        String dataNascimento = tela.jftfDataNascimento.getText().trim();
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();
         //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());
@@ -134,7 +134,7 @@ public class FuncionarioController {
         funcionario.setNome(nome);
         funcionario.setRg(rg);
         funcionario.setCpf(cpf);
-        //funcionario.setDataNascimento(dataNascimento);
+        funcionario.setDataNascimento(dataNascimento);
         funcionario.setCtps(ctps);
         funcionario.setCnh(cnh);
         //funcionario.setDataAdmissao(dataAdmissao);   

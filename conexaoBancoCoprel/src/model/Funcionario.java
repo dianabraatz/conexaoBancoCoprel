@@ -5,7 +5,11 @@
  */
 package model;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +19,7 @@ public class Funcionario {
     private Integer numeroRegistro;
     private String senha;
     private String nome;
-    private String rg;
+    private Long rg;
     private Long cpf;
     private Date dataNascimento;
     private String ctps;
@@ -46,11 +50,11 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public String getRg() {
+    public Long getRg() {
         return rg;
     }
 
-    public void setRg(String rg) {
+    public void setRg(Long rg) {
         this.rg = rg;
     }
 
@@ -70,6 +74,15 @@ public class Funcionario {
         this.dataNascimento = dataNascimento;
     }
 
+     public void setDataNascimento(String dataNascimento) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            setDataNascimento(format.parse(dataNascimento));
+        } catch (ParseException ex) {
+            Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
     public String getCtps() {
         return ctps;
     }
@@ -93,6 +106,16 @@ public class Funcionario {
     public void setDataAdmissao(Date dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
+    
+    public void setDataAdmissao(String dataNascimento) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            setDataAdmissao(format.parse(dataNascimento));
+        } catch (ParseException ex) {
+            Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
 
     
     
