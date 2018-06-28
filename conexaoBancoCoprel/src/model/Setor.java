@@ -13,7 +13,6 @@ import java.sql.Date;
  */
 public class Setor {
     private Integer codSetor;
-    private Integer permissao_horaExtra;
     private Integer repouso_semanalFixo;
     private String nomeSetor;
 
@@ -25,15 +24,7 @@ public class Setor {
         this.codSetor = codSetor;
     }
 
-    public Integer getPermissao_horaExtra() {
-        return permissao_horaExtra;
-    }
-
-    public void setPermissao_horaExtra(Integer permissao_horaExtra) {
-        this.permissao_horaExtra = permissao_horaExtra;
-    }
-
-    public Integer getRepouso_semanalFixo() {
+     public Integer getRepouso_semanalFixo() {
         return repouso_semanalFixo;
     }
 
