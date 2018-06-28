@@ -34,7 +34,6 @@ public class SetorController {
                     //alterar definir o que vai em cada linha - 1 linha para cada atributo exibido na tabela
                     linhas[0] = objeto.getCodSetor();  //alterar
                     linhas[1] = objeto.getNomeSetor(); //alterar
-                    linhas[2] = objeto.getPermissao_horaExtra();
                     linhas[3] = objeto.getRepouso_semanalFixo();
                     
                     model.addRow(linhas);
@@ -60,14 +59,12 @@ public class SetorController {
         //alterar obtendo os valores da tabela
         String codSetor = tela.tabelaSetor.getValueAt(linhaSelecionada, 0).toString(); //está na coluna 0
         String nomeSetor = tela.tabelaSetor.getValueAt(linhaSelecionada, 1).toString(); //está na coluna 1
-        String permissao_horaExtra = tela.tabelaSetor.getValueAt(linhaSelecionada, 2).toString(); //está na coluna 1
         String repouso_semanalFixo = tela.tabelaSetor.getValueAt(linhaSelecionada, 3).toString();
 
 
         //alterar setando os valores dos campos
         tela.jtfCodSetor.setText(codSetor);
         tela.jtfNomeSetor.setText(nomeSetor);
-        tela.jtfPermissaoHoraExtra.setText(permissao_horaExtra);
         tela.jtfRepousoSemanalFixo.setText(repouso_semanalFixo);
 
         // habilita/desabilita botões
@@ -85,14 +82,12 @@ public class SetorController {
         //alterar:: obtendo os valores preenchidos
         Integer codSetor = Integer.parseInt(tela.jtfCodSetor.getText().trim());
         String nomeSetor = tela.jtfNomeSetor.getText().trim();
-        Integer permissao_horaExtra = Integer.parseInt(tela.jtfPermissaoHoraExtra.getText().trim());
         Integer repouso_semanalFixo = Integer.parseInt(tela.jtfRepousoSemanalFixo.getText().trim());
 
         //alterar:: criando objeto
         Setor setor = new Setor();
         setor.setCodSetor(codSetor);
         setor.setNomeSetor(nomeSetor);
-        setor.setPermissao_horaExtra(permissao_horaExtra);
         setor.setRepouso_semanalFixo(repouso_semanalFixo);
 
         //alterar:: adicionando o objeto no banco de dados
@@ -118,14 +113,12 @@ public class SetorController {
         //alterar:: obtendo os valores preenchidos
         Integer codSetor = Integer.parseInt(tela.jtfCodSetor.getText().trim());
         String nomeSetor = tela.jtfNomeSetor.getText().trim();
-        Integer permissao_horaExtra = Integer.parseInt(tela.jtfPermissaoHoraExtra.getText().trim());
         Integer repouso_semanalFixo = Integer.parseInt(tela.jtfRepousoSemanalFixo.getText().trim());
 
         //alterar:: criando objeto
         Setor setor = new Setor();
         setor.setCodSetor(codSetor);
         setor.setNomeSetor(nomeSetor);
-        setor.setPermissao_horaExtra(permissao_horaExtra);
         setor.setRepouso_semanalFixo(repouso_semanalFixo);
         
         //alterar:: alterando o objeto no banco de dados
@@ -185,9 +178,6 @@ public class SetorController {
         }else if (tela.jtfNomeSetor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo nome!");
             return false;
-        }else if (tela.jtfPermissaoHoraExtra.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(tela, "Preencha o campo hora extra!");
-            return false;
         }else if (tela.jtfRepousoSemanalFixo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo repouso semanal!");
             return false;
@@ -204,7 +194,6 @@ public class SetorController {
         //alterar:: limpando os campos
         tela.jtfCodSetor.setText("");
         tela.jtfNomeSetor.setText("");
-        tela.jtfPermissaoHoraExtra.setText("");
         tela.jtfRepousoSemanalFixo.setText("");
 
         //habilitando/desabilitando os botões

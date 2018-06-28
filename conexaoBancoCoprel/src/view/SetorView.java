@@ -41,11 +41,9 @@ public class SetorView extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jtfCodSetor = new javax.swing.JTextField();
         jtfNomeSetor = new javax.swing.JTextField();
-        jtfPermissaoHoraExtra = new javax.swing.JTextField();
         jtfRepousoSemanalFixo = new javax.swing.JTextField();
         jbtExcluir = new javax.swing.JButton();
         jbtAlterar = new javax.swing.JButton();
@@ -74,10 +72,6 @@ public class SetorView extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Nome:");
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Hora Extra:");
-
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Repouso Semanal:");
@@ -85,8 +79,6 @@ public class SetorView extends javax.swing.JDialog {
         jtfCodSetor.setForeground(new java.awt.Color(51, 51, 51));
 
         jtfNomeSetor.setForeground(new java.awt.Color(51, 51, 51));
-
-        jtfPermissaoHoraExtra.setForeground(new java.awt.Color(51, 51, 51));
 
         jtfRepousoSemanalFixo.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -99,14 +91,16 @@ public class SetorView extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addGap(15, 15, 15)
+                    .addComponent(jLabel7))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfCodSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNomeSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPermissaoHoraExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfRepousoSemanalFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCodSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNomeSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfRepousoSemanalFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -120,10 +114,6 @@ public class SetorView extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtfNomeSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jtfPermissaoHoraExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -178,13 +168,13 @@ public class SetorView extends javax.swing.JDialog {
         tabelaSetor.setForeground(new java.awt.Color(51, 51, 51));
         tabelaSetor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Hora Extra", "Repouso Semanal"
+                "Código", "Nome", "Repouso Semanal"
             }
         ));
         tabelaSetor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,7 +224,7 @@ public class SetorView extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtAlterar)
                     .addComponent(jbtAdicionar)
@@ -260,19 +250,19 @@ public class SetorView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtExcluirActionPerformed
-        //FuncionarioController.excluir(this);
+        SetorController.excluir(this);
     }//GEN-LAST:event_jbtExcluirActionPerformed
 
     private void jbtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAlterarActionPerformed
-        //FuncionarioController.alterar(this);
+        SetorController.alterar(this);
     }//GEN-LAST:event_jbtAlterarActionPerformed
 
     private void jbtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarActionPerformed
-        //FuncionarioController.adicionar(this);
+        SetorController.adicionar(this);
     }//GEN-LAST:event_jbtAdicionarActionPerformed
 
     private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
-        //FuncionarioController.limparCampos(this);
+        SetorController.limparCampos(this);
     }//GEN-LAST:event_jbtLimparActionPerformed
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
@@ -280,7 +270,7 @@ public class SetorView extends javax.swing.JDialog {
     }//GEN-LAST:event_jScrollPane1MouseClicked
 
     private void tabelaSetorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSetorMouseClicked
-        //FuncionarioController.atualizaCampos(this);
+        SetorController.atualizaCampos(this);
     }//GEN-LAST:event_tabelaSetorMouseClicked
 
     /**
@@ -361,7 +351,6 @@ public class SetorView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPanel jPanel1;
@@ -374,7 +363,6 @@ public class SetorView extends javax.swing.JDialog {
     public javax.swing.JButton jbtLimpar;
     public javax.swing.JTextField jtfCodSetor;
     public javax.swing.JTextField jtfNomeSetor;
-    public javax.swing.JTextField jtfPermissaoHoraExtra;
     public javax.swing.JTextField jtfRepousoSemanalFixo;
     public javax.swing.JTable tabelaSetor;
     // End of variables declaration//GEN-END:variables

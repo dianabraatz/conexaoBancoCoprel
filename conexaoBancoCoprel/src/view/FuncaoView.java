@@ -245,19 +245,19 @@ public class FuncaoView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtExcluirActionPerformed
-        //FuncionarioController.excluir(this);
+        FuncaoController.excluir(this);
     }//GEN-LAST:event_jbtExcluirActionPerformed
 
     private void jbtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAlterarActionPerformed
-        //FuncionarioController.alterar(this);
+        FuncaoController.alterar(this);
     }//GEN-LAST:event_jbtAlterarActionPerformed
 
     private void jbtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarActionPerformed
-        //FuncionarioController.adicionar(this);
+        FuncaoController.adicionar(this);
     }//GEN-LAST:event_jbtAdicionarActionPerformed
 
     private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
-        //FuncionarioController.limparCampos(this);
+        FuncaoController.limparCampos(this);
     }//GEN-LAST:event_jbtLimparActionPerformed
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
@@ -265,7 +265,7 @@ public class FuncaoView extends javax.swing.JDialog {
     }//GEN-LAST:event_jScrollPane1MouseClicked
 
     private void tabelaFuncaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncaoMouseClicked
-        //FuncionarioController.atualizaCampos(this);
+        FuncaoController.atualizaCampos(this);
     }//GEN-LAST:event_tabelaFuncaoMouseClicked
 
     /**

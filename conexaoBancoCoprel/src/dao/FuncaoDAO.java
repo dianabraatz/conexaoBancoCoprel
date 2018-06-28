@@ -22,7 +22,7 @@ public class FuncaoDAO {
     
     public boolean adicionar(Funcao objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO funcao (codFucnao, nivel_acesso, nome) VALUES (?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO funcao (codFuncao, nivel_acesso, nome) VALUES (?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             //definindo as interrogações (uma linha para cada ? do SQL)
