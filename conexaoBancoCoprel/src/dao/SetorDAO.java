@@ -27,7 +27,6 @@ public class SetorDAO {
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             //definindo as interrogações (uma linha para cada ? do SQL)
             pstmt.setInt(1, objeto.getCodSetor()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setInt(2, objeto.getPermissao_horaExtra());
             pstmt.setInt(3, objeto.getRepouso_semanalFixo());
             pstmt.setString(4, objeto.getNomeSetor()); // alterar o primeiro parâmetro indica a interrogação, começando em 1             
             
@@ -42,16 +41,15 @@ public class SetorDAO {
     public boolean alterar(Setor objeto) {
         try {
             String sql = " UPDATE setor "
-                    + "    SET permissao_horaExtra = ?, repouso_semanalFixo = ?, nomeSetor = ?"
+                    + "    SET repouso_semanalFixo = ?, nomeSetor = ?"
                     + "  WHERE codSetor = ? "; //alterar tabela, atributos e chave primária - where a chave primaria
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
 
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getPermissao_horaExtra());
-            pstmt.setInt(2, objeto.getRepouso_semanalFixo());
-            pstmt.setString(3, objeto.getNomeSetor()); 
-            pstmt.setInt(4, objeto.getCodSetor());
+            pstmt.setInt(1, objeto.getRepouso_semanalFixo());
+            pstmt.setString(2, objeto.getNomeSetor()); 
+            pstmt.setInt(3, objeto.getCodSetor());
 
             pstmt.executeUpdate(); //executando
             return true;
