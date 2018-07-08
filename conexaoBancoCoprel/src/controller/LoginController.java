@@ -9,8 +9,8 @@ import dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
 import view.LoginView;
 import model.Funcionario;
-import view.PontoAdministradorView;
-import view.PontoUserComumView;
+import view.AdministradorView;
+import view.UsuarioComumView;
 
 /**
  *
@@ -72,14 +72,14 @@ public class LoginController {
             
             LoginView log = new LoginView();            
             
-            PontoUserComumView obj =new PontoUserComumView();
+            UsuarioComumView obj =new UsuarioComumView();
             obj.setVisible(true);
             log.setVisible(false);
          
         }else if(resultado == 2){
             LoginView log = new LoginView();            
             
-            PontoAdministradorView obj =new PontoAdministradorView();
+            AdministradorView obj =new AdministradorView();
             obj.setVisible(true);
             log.setVisible(false);
         }

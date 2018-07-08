@@ -5,15 +5,12 @@
  */
 package model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Administrador
  */
 public class Setor {
     private Integer codSetor;
-    private Integer repouso_semanalFixo;
     private String nomeSetor;
 
     public Integer getCodSetor() {
@@ -22,14 +19,6 @@ public class Setor {
 
     public void setCodSetor(Integer codSetor) {
         this.codSetor = codSetor;
-    }
-
-     public Integer getRepouso_semanalFixo() {
-        return repouso_semanalFixo;
-    }
-
-    public void setRepouso_semanalFixo(Integer repouso_semanalFixo) {
-        this.repouso_semanalFixo = repouso_semanalFixo;
     }
 
     public String getNomeSetor() {

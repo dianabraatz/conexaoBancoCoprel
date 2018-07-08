@@ -22,15 +22,12 @@ public class SetorDAO {
     
     public boolean adicionar(Setor objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO setor (codSetor, permissao_horaExtra, repouso_semanalFixo, nome) VALUES (?, ?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO setor(nome) VALUES (?);"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getCodSetor()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setInt(3, objeto.getRepouso_semanalFixo());
-            pstmt.setString(4, objeto.getNomeSetor()); // alterar o primeiro parâmetro indica a interrogação, começando em 1             
+            pstmt.setString(1, objeto.getNomeSetor());           
             
-            pstmt.executeUpdate(); //executando
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -40,16 +37,13 @@ public class SetorDAO {
 
     public boolean alterar(Setor objeto) {
         try {
-            String sql = " UPDATE setor "
-                    + "    SET repouso_semanalFixo = ?, nomeSetor = ?"
-                    + "  WHERE codSetor = ? "; //alterar tabela, atributos e chave primária - where a chave primaria
+            String sql = " UPDATE setor SET nome = ?  WHERE codSetor = ?;";
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
 
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getRepouso_semanalFixo());
-            pstmt.setString(2, objeto.getNomeSetor()); 
-            pstmt.setInt(3, objeto.getCodSetor());
+            pstmt.setString(1, objeto.getNomeSetor()); 
+            pstmt.setInt(2, objeto.getCodSetor());
 
             pstmt.executeUpdate(); //executando
             return true;
@@ -61,7 +55,7 @@ public class SetorDAO {
 
     public boolean excluir(Setor objeto) {
         try {
-            String sql = " DELETE FROM setor WHERE codSetor = ? "; //alterar a tabela e a chave primária no WHERE
+            String sql = " DELETE FROM setor WHERE codSetor = ?;"; //alterar a tabela e a chave primária no WHERE
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             pstmt.setInt(1, objeto.getCodSetor()); //alterar conforme a chave primária
@@ -76,7 +70,7 @@ public class SetorDAO {
     }
 
     public List<Setor> selecionar() {
-        String sql = "SELECT codSetor, nomeSetor FROM setor ORDER BY nomeSetor"; //alterar tabela e atributos
+        String sql = "SELECT * FROM setor"; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();
@@ -88,7 +82,7 @@ public class SetorDAO {
 
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
                 objeto.setCodSetor(rs.getInt("codSetor")); //alterar
-                objeto.setNomeSetor(rs.getString("nomeSetor"));  //alterar
+                objeto.setNomeSetor(rs.getString("nome"));  //alterar
 
                 lista.add(objeto);
             }

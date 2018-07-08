@@ -13,11 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import model.Setor;
 import view.SetorView;
 
-
-/**
- *
- * @author edimar
- */
 public class SetorController {
 
     public static void atualizaTabela(JTable tabelaSetor) {
@@ -27,16 +22,15 @@ public class SetorController {
 
             SetorDAO dao = new SetorDAO(); //alterar
             List<Setor> objetos = dao.selecionar();
-            Object linhas[] = new Object[4]; //alterar o índice de acordo com o número de campos exibidos 
-
+            Object colunas[] = new Object[2]; //alterar o índice de acordo com o número de campos exibidos 
+            
             if (!objetos.isEmpty()) {
                 for (Setor objeto : objetos) {//alterar a classe
                     //alterar definir o que vai em cada linha - 1 linha para cada atributo exibido na tabela
-                    linhas[0] = objeto.getCodSetor();  //alterar
-                    linhas[1] = objeto.getNomeSetor(); //alterar
-                    linhas[3] = objeto.getRepouso_semanalFixo();
+                    colunas[0] = objeto.getCodSetor();  //alterar
+                    colunas[1] = objeto.getNomeSetor(); //alterar
                     
-                    model.addRow(linhas);
+                    model.addRow(colunas);
                 }
             }
         } catch (Exception e) {
@@ -59,13 +53,11 @@ public class SetorController {
         //alterar obtendo os valores da tabela
         String codSetor = tela.tabelaSetor.getValueAt(linhaSelecionada, 0).toString(); //está na coluna 0
         String nomeSetor = tela.tabelaSetor.getValueAt(linhaSelecionada, 1).toString(); //está na coluna 1
-        String repouso_semanalFixo = tela.tabelaSetor.getValueAt(linhaSelecionada, 3).toString();
 
 
         //alterar setando os valores dos campos
         tela.jtfCodSetor.setText(codSetor);
         tela.jtfNomeSetor.setText(nomeSetor);
-        tela.jtfRepousoSemanalFixo.setText(repouso_semanalFixo);
 
         // habilita/desabilita botões
         tela.jbtAdicionar.setEnabled(false);
@@ -80,15 +72,11 @@ public class SetorController {
         }
 
         //alterar:: obtendo os valores preenchidos
-        Integer codSetor = Integer.parseInt(tela.jtfCodSetor.getText().trim());
         String nomeSetor = tela.jtfNomeSetor.getText().trim();
-        Integer repouso_semanalFixo = Integer.parseInt(tela.jtfRepousoSemanalFixo.getText().trim());
 
         //alterar:: criando objeto
         Setor setor = new Setor();
-        setor.setCodSetor(codSetor);
         setor.setNomeSetor(nomeSetor);
-        setor.setRepouso_semanalFixo(repouso_semanalFixo);
 
         //alterar:: adicionando o objeto no banco de dados
         SetorDAO dao = new SetorDAO();
@@ -113,13 +101,11 @@ public class SetorController {
         //alterar:: obtendo os valores preenchidos
         Integer codSetor = Integer.parseInt(tela.jtfCodSetor.getText().trim());
         String nomeSetor = tela.jtfNomeSetor.getText().trim();
-        Integer repouso_semanalFixo = Integer.parseInt(tela.jtfRepousoSemanalFixo.getText().trim());
 
         //alterar:: criando objeto
         Setor setor = new Setor();
         setor.setCodSetor(codSetor);
         setor.setNomeSetor(nomeSetor);
-        setor.setRepouso_semanalFixo(repouso_semanalFixo);
         
         //alterar:: alterando o objeto no banco de dados
         SetorDAO dao = new SetorDAO(); //alterar
@@ -139,7 +125,7 @@ public class SetorController {
         //verificando se usuário tem certeza
         int result = JOptionPane.showConfirmDialog(tela, "Tem certeza que deseja excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
         if (result!=JOptionPane.YES_OPTION) {
-            return; //não quer excluir
+            return;
         }
         
         //alterar:: obtendo a chave primária
@@ -159,7 +145,7 @@ public class SetorController {
             limparCampos(tela);
             JOptionPane.showMessageDialog(tela, "Excluído com sucesso!"); //não alterar
         } else {
-            JOptionPane.showMessageDialog(tela, "Problemas com a exclusão!");
+            JOptionPane.showMessageDialog(tela, "Problemas com a exclusão, tente novamente!");
         }
     }
 
@@ -172,14 +158,8 @@ public class SetorController {
      */
     public static boolean verificarCampos(SetorView tela) {
         //alterar:: conforme os campos obrigatórios
-        if (tela.jtfCodSetor.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(tela, "Preencha o campo codigo!");
-            return false;
-        }else if (tela.jtfNomeSetor.getText().isEmpty()) {
+        if (tela.jtfNomeSetor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo nome!");
-            return false;
-        }else if (tela.jtfRepousoSemanalFixo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(tela, "Preencha o campo repouso semanal!");
             return false;
         }else
         return true;
@@ -194,11 +174,11 @@ public class SetorController {
         //alterar:: limpando os campos
         tela.jtfCodSetor.setText("");
         tela.jtfNomeSetor.setText("");
-        tela.jtfRepousoSemanalFixo.setText("");
 
         //habilitando/desabilitando os botões
         tela.jbtAdicionar.setEnabled(true);
         tela.jbtAlterar.setEnabled(false);
         tela.jbtExcluir.setEnabled(false);
+        
     }
 }
