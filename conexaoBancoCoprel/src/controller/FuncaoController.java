@@ -80,13 +80,11 @@ public class FuncaoController {
         }
 
         //alterar:: obtendo os valores preenchidos
-        Integer codFuncao = Integer.parseInt(tela.jtfCodFuncao.getText().trim());
         String nome = tela.jtfNome.getText().trim();
         Integer nivel_acesso = Integer.parseInt(tela.jtfNivelAcesso.getText().trim());    
 
         //alterar:: criando objeto
         Funcao funcao = new Funcao();
-        funcao.setCodFuncao(codFuncao);
         funcao.setNome(nome);
         funcao.setNivel_acesso(nivel_acesso);        
 
@@ -109,6 +107,7 @@ public class FuncaoController {
         if (!verificarCampos(tela)) {
             return; //algum campo não está preenchido corretamente
         }
+        
         Integer codFuncao = Integer.parseInt(tela.jtfCodFuncao.getText().trim());
         String nome = tela.jtfNome.getText().trim();
         Integer nivel_acesso = Integer.parseInt(tela.jtfNivelAcesso.getText().trim());    
@@ -170,10 +169,7 @@ public class FuncaoController {
      */
     public static boolean verificarCampos(FuncaoView tela) {
         //alterar:: conforme os campos obrigatórios
-        if (tela.jtfCodFuncao.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(tela, "Preencha o campo codigo!");
-            return false;
-        }else if (tela.jtfNome.getText().isEmpty()) {
+        if (tela.jtfNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo nome!");
             return false;
         }else if (tela.jtfNivelAcesso.getText().isEmpty()) {

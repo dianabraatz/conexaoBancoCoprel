@@ -55,33 +55,30 @@ public class LoginController {
         //System.out.println(resultado);
         if (resultado) {
             JOptionPane.showMessageDialog(tela, "Numero de registro e senha encontrados."); //não alterar
-            buscaNivelAcesso(obj);
+            buscaNivelAcesso(obj, tela);
         } else {
             
             JOptionPane.showMessageDialog(tela, "Problemas com a verificação!");
         }
     }
         //define para qual tela o usuário sera direcionado (administrador/usuário comum)
-        public static void buscaNivelAcesso(Funcionario login){
+        public static void buscaNivelAcesso(Funcionario login, LoginView tela){
         FuncionarioDAO dao = new FuncionarioDAO();
         int resultado = dao.buscaNivelAcesso(login);
         
         System.out.println(resultado);
         
-        if(resultado == 1){ //usuário comum
-            
-            LoginView log = new LoginView();            
+        if(resultado == 1){ //usuário comum           
             
             UsuarioComumView obj =new UsuarioComumView();
             obj.setVisible(true);
-            log.setVisible(false);
+            tela.setVisible(false);
          
-        }else if(resultado == 2){
-            LoginView log = new LoginView();            
+        }else if(resultado == 2){  //administrador
             
             AdministradorView obj =new AdministradorView();
             obj.setVisible(true);
-            log.setVisible(false);
+            tela.setVisible(false);
         }
     }
     

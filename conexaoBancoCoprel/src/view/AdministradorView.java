@@ -17,11 +17,11 @@ public class AdministradorView extends javax.swing.JFrame {
      */
     public AdministradorView() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
         
         PontoView obj = new PontoView();
         obj.setVisible(true);
-
+        this.setLocationRelativeTo(null);
     }
 
     /**

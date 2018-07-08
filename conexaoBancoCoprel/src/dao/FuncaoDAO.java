@@ -22,15 +22,15 @@ public class FuncaoDAO {
     
     public boolean adicionar(Funcao objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO funcao (codFuncao, nivel_acesso, nome) VALUES (?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO funcao(nome, nivelAcesso) VALUES (?,?);"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getCodFuncao()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setInt(2, objeto.getNivel_acesso()); 
-            pstmt.setString(3, objeto.getNome()); // alterar o primeiro parâmetro indica a interrogação, começando em 1             
             
-            pstmt.executeUpdate(); //executando
+            pstmt.setString(1, objeto.getNome()); 
+            pstmt.setInt(2, objeto.getNivel_acesso()); 
+      
+            
+            pstmt.executeUpdate(); 
             return true;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -40,15 +40,14 @@ public class FuncaoDAO {
 
     public boolean alterar(Funcao objeto) {
         try {
-            String sql = " UPDATE funcao "
-                    + "    SET nivel_acesso = ?, nome = ?"
-                    + "  WHERE codFuncao = ? "; //alterar tabela, atributos e chave primária - where a chave primaria
+            String sql = " UPDATE funcao SET nome= ?, nivelAcesso = ? WHERE codFuncao = ?;"; //alterar tabela, atributos e chave primária - where a chave primaria
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
 
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getNivel_acesso()); 
-            pstmt.setString(2, objeto.getNome()); 
+            
+            pstmt.setString(1, objeto.getNome()); 
+            pstmt.setInt(2, objeto.getNivel_acesso()); 
             pstmt.setInt(3, objeto.getCodFuncao());
 
             pstmt.executeUpdate(); //executando
@@ -76,7 +75,7 @@ public class FuncaoDAO {
     }
 
     public List<Funcao> selecionar() {
-        String sql = "SELECT codFuncao, nome FROM funcao ORDER BY nome"; //alterar tabela e atributos
+        String sql = "SELECT * FROM funcao ORDER BY codFuncao"; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();
@@ -89,6 +88,7 @@ public class FuncaoDAO {
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
                 objeto.setCodFuncao(rs.getInt("codFuncao")); //alterar
                 objeto.setNome(rs.getString("nome"));  //alterar
+                objeto.setNivel_acesso(rs.getInt("nivelAcesso"));
 
                 lista.add(objeto);
             }
@@ -103,11 +103,6 @@ public class FuncaoDAO {
 
     //método só para testar
     public static void main(String[] args) {
-        Funcao objeto = new Funcao(); //alterar
-        objeto.setNome("Diana"); //alterar
-
-        FuncaoDAO dao = new FuncaoDAO(); //alterar
-        dao.adicionar(objeto); //alterar
     }
     
 }
