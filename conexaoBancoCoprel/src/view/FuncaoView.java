@@ -78,6 +78,7 @@ public class FuncaoView extends javax.swing.JDialog {
         jLabel6.setText("Nível de Acesso:");
 
         jtfCodFuncao.setForeground(new java.awt.Color(51, 51, 51));
+        jtfCodFuncao.setEnabled(false);
 
         jtfNome.setForeground(new java.awt.Color(51, 51, 51));
 

@@ -78,6 +78,7 @@ public class SetorView extends javax.swing.JDialog {
         jLabel7.setText("Repouso Semanal:");
 
         jtfCodSetor.setForeground(new java.awt.Color(51, 51, 51));
+        jtfCodSetor.setEnabled(false);
 
         jtfNomeSetor.setForeground(new java.awt.Color(51, 51, 51));
 
