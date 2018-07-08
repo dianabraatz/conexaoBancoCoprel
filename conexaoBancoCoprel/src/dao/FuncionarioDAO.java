@@ -33,7 +33,7 @@ public class FuncionarioDAO {
             pstmt.setString(3, objeto.getNome()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
             pstmt.setString(4, objeto.getCtps());
             pstmt.setString(5, objeto.getRg());
-            pstmt.setLong(6, objeto.getCpf()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
+            pstmt.setString(6, objeto.getCpf()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
             pstmt.setString(7, objeto.getCnh());
             pstmt.setDate(8, new Date(objeto.getDataNascimento().getTime()));         
             
@@ -58,7 +58,7 @@ public class FuncionarioDAO {
             pstmt.setString(2, objeto.getNome()); 
             pstmt.setString(3, objeto.getCtps());
             pstmt.setString(4, objeto.getRg());
-            pstmt.setLong(5, objeto.getCpf()); 
+            pstmt.setString(5, objeto.getCpf()); 
             pstmt.setString(6, objeto.getCnh());
             pstmt.setDate(7, new Date(objeto.getDataNascimento().getTime()));   
             pstmt.setInt(8, objeto.getNumeroRegistro());
@@ -101,10 +101,10 @@ public class FuncionarioDAO {
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
                 objeto.setNumeroRegistro(rs.getInt("numeroRegistro")); //alterar
                 objeto.setNome(rs.getString("nome"));  //alterar
-                objeto.setRg(rs.getLong("rg"));
-                objeto.setCpf(rs.getLong("cpf"));
+                objeto.setRg(rs.getString("rg"));
+                objeto.setCpf(rs.getString("cpf"));
                 objeto.setDataNascimento(rs.getDate("dataNascimento"));
-                objeto.setCtps(rs.getString);
+                objeto.setCtps(rs.getString("ctps"));
                 
 
                 lista.add(objeto);
@@ -122,7 +122,7 @@ public class FuncionarioDAO {
     public static void main(String[] args) {
         Funcionario objeto = new Funcionario(); //alterar
         objeto.setNome("Diana"); //alterar
-        objeto.setCpf(new Long("02851371070")); //alterar - crei um objeto long
+        objeto.setCpf(new String("02851371070")); //alterar - crei um objeto long
 
         FuncionarioDAO dao = new FuncionarioDAO(); //alterar
         dao.adicionar(objeto); //alterar

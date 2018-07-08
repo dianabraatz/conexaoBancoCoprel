@@ -26,7 +26,7 @@ public class PontoAdministradorController {
         
         //alterar:: criando objeto
         Ponto ponto = new Ponto();
-        ponto.setDh_inicio(dh_inicio);
+        //ponto.setDh_inicio(dh_inicio);
         //reverrrrrrrrrrrrrrr
     
         //alterar:: adicionando o objeto no banco de dados

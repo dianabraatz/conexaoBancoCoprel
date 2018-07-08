@@ -7,14 +7,14 @@ package view;
 
 /**
  *
- * @author edimar
+ * @author Charlan
  */
-public class PontoAdministradorView extends javax.swing.JFrame {
+public class PontoUserComumView extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuView
+     * Creates new form PontoUserComumView
      */
-    public PontoAdministradorView() {
+    public PontoUserComumView() {
         initComponents();
     }
 
@@ -35,19 +35,14 @@ public class PontoAdministradorView extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         jmnList = new javax.swing.JMenu();
         jmiAnimal = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Exemplo de Software");
-        setLocationByPlatform(true);
-        setResizable(false);
 
         jButton1.setText("Abrir");
 
         jButton2.setText("Fechar");
 
-        jLabel1.setText("Ponto Administrador");
+        jLabel1.setText("Ponto Usuário Comum");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,17 +54,17 @@ public class PontoAdministradorView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(74, 74, 74))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(128, 128, 128)
                 .addComponent(jLabel1)
-                .addGap(130, 130, 130))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -77,34 +72,19 @@ public class PontoAdministradorView extends javax.swing.JFrame {
         );
 
         desktopPane.add(jPanel1);
-        jPanel1.setBounds(340, 210, 360, 190);
+        jPanel1.setBounds(300, 220, 360, 190);
 
         jmnList.setMnemonic('e');
         jmnList.setText("Cadastros");
 
         jmiAnimal.setText("Funcionario");
+        jmiAnimal.setEnabled(false);
         jmiAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiAnimalActionPerformed(evt);
             }
         });
         jmnList.add(jmiAnimal);
-
-        jMenuItem1.setText("Funcao");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jmnList.add(jMenuItem1);
-
-        jMenuItem2.setText("Setor");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jmnList.add(jMenuItem2);
 
         menuBar.add(jmnList);
 
@@ -114,9 +94,7 @@ public class PontoAdministradorView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 942, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 942, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,18 +111,6 @@ public class PontoAdministradorView extends javax.swing.JFrame {
         FuncionarioView dialog = new FuncionarioView(this, true); //alterar
         dialog.setVisible(true); //alterar
     }//GEN-LAST:event_jmiAnimalActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        FuncaoView dialog = new FuncaoView(this, true); //alterar
-        dialog.setVisible(true); //alterar
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        SetorView dialog = new SetorView(this, true); //alterar
-        dialog.setVisible(true); //alterar
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,27 +129,20 @@ public class PontoAdministradorView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PontoAdministradorView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PontoUserComumView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PontoAdministradorView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PontoUserComumView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PontoAdministradorView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PontoUserComumView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PontoAdministradorView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PontoUserComumView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PontoAdministradorView().setVisible(true);
+                new PontoUserComumView().setVisible(true);
             }
         });
     }
@@ -193,12 +152,9 @@ public class PontoAdministradorView extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jmiAnimal;
     private javax.swing.JMenu jmnList;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
-
 }

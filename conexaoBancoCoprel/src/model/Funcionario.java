@@ -19,8 +19,8 @@ public class Funcionario {
     private Integer numeroRegistro;
     private String senha;
     private String nome;
-    private Long rg;
-    private Long cpf;
+    private String rg;
+    private String cpf;
     private Date dataNascimento;
     private String ctps;
     private String cnh;
@@ -50,19 +50,19 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public Long getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(Long rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

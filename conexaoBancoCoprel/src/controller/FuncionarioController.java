@@ -6,6 +6,7 @@
 package controller;
 
 import dao.FuncionarioDAO;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -77,12 +78,14 @@ public class FuncionarioController {
             return; //algum campo não está preenchido corretamente
         }
 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");        
+        
         //alterar:: obtendo os valores preenchidos
         Integer numeroRegistro = Integer.parseInt(tela.jtfNumeroRegistro.getText().trim());
         String nome = tela.jtfNome.getText().trim();
         String rg = tela.jtfRG.getText().trim();
-        Long cpf = Long.parseLong(tela.jftfCPF.getText().trim());
-        //String dataNascimento = tela.jftfDataNascimento.getText().trim();
+        String cpf = tela.jtfCPF.getText().trim();
+        //Date dataNascimento = formato.parse(tela.jtfDataNascimento.getText().trim());
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();
         //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());        
@@ -122,8 +125,8 @@ public class FuncionarioController {
         Integer numeroRegistro = Integer.parseInt(tela.jtfNumeroRegistro.getText().trim());
         String nome = tela.jtfNome.getText().trim();
         String rg = tela.jtfRG.getText().trim();
-        Long cpf = Long.parseLong(tela.jftfCPF.getText().trim());
-        String dataNascimento = tela.jftfDataNascimento.getText().trim();
+        String cpf = tela.jtfCPF.getText().trim();
+        String dataNascimento = tela.jtfDataNascimento.getText().trim();
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();
         //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());
@@ -199,10 +202,10 @@ public class FuncionarioController {
         }else if (tela.jtfRG.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo RG!");
             return false;
-        }else if (tela.jftfCPF.getText().isEmpty()) {
+        }else if (tela.jtfCPF.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo CPF!");
             return false;
-        }else if (tela.jftfDataNascimento.getText().isEmpty()) {
+        }else if (tela.jtfDataNascimento.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo data de nascimento!");
             return false;
         }else if (tela.jtfCTPS.getText().isEmpty()) {
@@ -211,7 +214,7 @@ public class FuncionarioController {
         }else if (tela.jtfCNH.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo CNH!");
             return false;
-        }else if (tela.jftfDataAdmissao.getText().isEmpty()) {
+        }else if (tela.jtfDataAdmissao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo data de admissao!");
             return false;
         }else
@@ -228,11 +231,11 @@ public class FuncionarioController {
         tela.jtfNumeroRegistro.setText("");
         tela.jtfNome.getText().trim();
         tela.jtfRG.getText().trim();
-        tela.jftfCPF.setText("");
-        tela.jftfDataNascimento.setText("");
+        tela.jtfCPF.setText("");
+        tela.jtfDataNascimento.setText("");
         tela.jtfCTPS.setText("");
         tela.jtfCNH.setText("");
-        tela.jftfDataAdmissao.setText("");
+        tela.jtfDataAdmissao.setText("");
 
         //habilitando/desabilitando os botões
         tela.jbtAdicionar.setEnabled(true);

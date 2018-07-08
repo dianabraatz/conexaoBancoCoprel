@@ -48,14 +48,14 @@ public class FuncionarioView extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jtfNumeroRegistro = new javax.swing.JTextField();
         jtfNome = new javax.swing.JTextField();
-        jftfCPF = new javax.swing.JFormattedTextField();
+        jtfCPF = new javax.swing.JFormattedTextField();
         jtfRG = new javax.swing.JTextField();
-        jftfDataNascimento = new javax.swing.JFormattedTextField();
+        jtfDataNascimento = new javax.swing.JFormattedTextField();
         jtfCTPS = new javax.swing.JTextField();
         jtfCNH = new javax.swing.JTextField();
         jcbSetor = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jftfDataAdmissao = new javax.swing.JFormattedTextField();
+        jtfDataAdmissao = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jcbFuncao = new javax.swing.JComboBox<>();
@@ -110,17 +110,21 @@ public class FuncionarioView extends javax.swing.JDialog {
 
         jtfNome.setForeground(new java.awt.Color(51, 51, 51));
 
-        jftfCPF.setForeground(new java.awt.Color(51, 51, 51));
+        jtfCPF.setForeground(new java.awt.Color(51, 51, 51));
         try {
-            jftfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            jtfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         jtfRG.setForeground(new java.awt.Color(51, 51, 51));
 
-        jftfDataNascimento.setForeground(new java.awt.Color(51, 51, 51));
-        jftfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jtfDataNascimento.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            jtfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jtfCTPS.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -133,7 +137,12 @@ public class FuncionarioView extends javax.swing.JDialog {
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Data de admissão:");
 
-        jftfDataAdmissao.setForeground(new java.awt.Color(51, 51, 51));
+        jtfDataAdmissao.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            jtfDataAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel12.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
@@ -168,19 +177,17 @@ public class FuncionarioView extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfNumeroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfRG, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCNH, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jftfDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jcbFuncao, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jcbSetor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jftfDataNascimento, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtfCTPS, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jftfCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jtfDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jtfCTPS)
+                    .addComponent(jtfNumeroRegistro)
+                    .addComponent(jtfRG)
+                    .addComponent(jtfCPF)
+                    .addComponent(jtfCNH)
+                    .addComponent(jtfDataAdmissao)
+                    .addComponent(jcbSetor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jcbFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -201,10 +208,10 @@ public class FuncionarioView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,7 +224,7 @@ public class FuncionarioView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jftfDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,11 +464,11 @@ public class FuncionarioView extends javax.swing.JDialog {
     public javax.swing.JButton jbtLimpar;
     public javax.swing.JComboBox<String> jcbFuncao;
     public javax.swing.JComboBox<String> jcbSetor;
-    public javax.swing.JFormattedTextField jftfCPF;
-    public javax.swing.JFormattedTextField jftfDataAdmissao;
-    public javax.swing.JFormattedTextField jftfDataNascimento;
     public javax.swing.JTextField jtfCNH;
+    public javax.swing.JFormattedTextField jtfCPF;
     public javax.swing.JTextField jtfCTPS;
+    public javax.swing.JFormattedTextField jtfDataAdmissao;
+    public javax.swing.JFormattedTextField jtfDataNascimento;
     public javax.swing.JTextField jtfNome;
     public javax.swing.JTextField jtfNumeroRegistro;
     public javax.swing.JTextField jtfRG;
