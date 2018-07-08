@@ -5,10 +5,10 @@
  */
 package controller;
 
+import dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
 import view.LoginView;
-import model.Login;
-import dao.LoginDAO;
+import model.Funcionario;
 import view.PontoAdministradorView;
 import view.PontoUserComumView;
 
@@ -34,7 +34,7 @@ public class LoginController {
             return false;
         }return true;
     }
-         
+    
     public static void executaLogin(LoginView tela){
         //verificando se os campos estão preenchidos
         if (!verificarCampos(tela)) {
@@ -45,25 +45,25 @@ public class LoginController {
         String senha = String.valueOf(tela.jpfSenha.getPassword());
         
         //alterar:: criando objeto
-        Login login = new Login();
-        login.setNumRegistro(numeroRegistro);
-        login.setSenha(senha);
+        Funcionario obj = new Funcionario();
+        obj.setNumeroRegistro(numeroRegistro);
+        obj.setSenha(senha);
         
         //alterar:: alterando o objeto no banco de dados
-        LoginDAO dao = new LoginDAO(); //alterar
-        boolean resultado = dao.executaLogin(login);
+        FuncionarioDAO dao = new FuncionarioDAO(); //alterar
+        boolean resultado = dao.executaLogin(obj);
         //System.out.println(resultado);
         if (resultado) {
             JOptionPane.showMessageDialog(tela, "Numero de registro e senha encontrados."); //não alterar
-            buscaNivelAcesso(login);
+            buscaNivelAcesso(obj);
         } else {
             
             JOptionPane.showMessageDialog(tela, "Problemas com a verificação!");
         }
     }
-    
-    public static void buscaNivelAcesso(Login login){
-        LoginDAO dao = new LoginDAO();
+        //define para qual tela o usuário sera direcionado (administrador/usuário comum)
+        public static void buscaNivelAcesso(Funcionario login){
+        FuncionarioDAO dao = new FuncionarioDAO();
         int resultado = dao.buscaNivelAcesso(login);
         
         System.out.println(resultado);

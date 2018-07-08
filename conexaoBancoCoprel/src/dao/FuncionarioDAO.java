@@ -117,6 +117,59 @@ public class FuncionarioDAO {
         }
         return null;
     }
+    
+    //verifica se existe usuário e senha no banco
+     public boolean executaLogin(Funcionario objeto){
+        boolean resultado= false;
+        try{
+            String sql = "SELECT * FROM funcionario WHERE numRegistro =? AND senha =?;";
+        
+            PreparedStatement pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setInt(1, objeto.getNumeroRegistro());
+            pst.setString(2, objeto.getSenha());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            //retorna true ou false para confirmar se a busca foi completa;
+            resultado = rs.next();
+            
+            System.out.println(resultado);
+            
+            return resultado;
+            
+        }catch (SQLException | ClassNotFoundException e) {
+                 System.out.println(e);
+                 return resultado;
+        }
+        
+    }
+    
+    public int buscaNivelAcesso(Funcionario objeto){
+        int nivelAcesso = 0;
+ 
+        try{
+            String sql = "SELECT funcao.nivelAcesso as nivel_acesso FROM funcao funcao JOIN funcionario f ON funcao.codFuncao = f.codFuncao WHERE numRegistro = ? AND senha =?;";
+            
+            PreparedStatement pst = Conexao.getConexao().prepareStatement(sql); 
+            pst.setInt(1, objeto.getNumeroRegistro());
+            pst.setString(2, objeto.getSenha());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                nivelAcesso = rs.getInt("nivel_acesso");
+            }
+            pst.close();
+            return nivelAcesso;
+            
+            
+        }catch (SQLException | ClassNotFoundException e) {
+                 System.out.println(e);
+        }
+
+        return nivelAcesso;
+
+    }
 
     //método só para testar
     public static void main(String[] args) {
