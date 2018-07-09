@@ -5,7 +5,9 @@
  */
 package controller;
 
+import dao.FuncaoDAO;
 import dao.FuncionarioDAO;
+import dao.SetorDAO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +51,22 @@ public class FuncionarioController {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void AtualizaComboBoxSetor(JComboBox cbSetor){
+        //cbSetor.removeAllItens();
+        SetorDAO dao = new SetorDAO();
+        for(Setor setor: dao.selecionar()){
+            cbSetor.addItem(setor);
+        }
+    }
+    
+    public static void AtualizaComboBoxFuncao(JComboBox cbFuncao){
+        //cbFuncao.removeAllItens();
+        FuncaoDAO dao = new FuncaoDAO();
+        for(Funcao funcao: dao.selecionar()){
+            cbFuncao.addItem(funcao);
         }
     }
 
@@ -105,9 +124,9 @@ public class FuncionarioController {
         String cpf = tela.jtfCPF.getText().trim();  
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();   
-        String setor = tela.jtfSetor.getText().trim();
-        String funcao = tela.jtfFuncao.getText().trim();
-        String senha = tela.jtfSenha.getText().trim();
+        String setor = tela.cbSetor.getSelectedItem().toString();
+        String funcao = tela.cbFuncao.getSelectedItem().toString();
+        //String senha = tela.jtfSenha.getText().trim();
         
         //ERRO: PRECISA CONVERTER DE STRING PRA java.util.Date
         //não esta convertendo a data certa que é colocada na tela
@@ -133,7 +152,7 @@ public class FuncionarioController {
         funcionario.setCtps(ctps);
         funcionario.setCnh(cnh);
         funcionario.setDataAdmissao(dataAdmissao);   
-        funcionario.setSenha(senha);
+        //funcionario.setSenha(senha);
         
         Setor objSetor = new Setor();
         objSetor.getCodSetor();

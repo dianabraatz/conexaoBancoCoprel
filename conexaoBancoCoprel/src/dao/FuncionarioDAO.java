@@ -97,7 +97,9 @@ public class FuncionarioDAO {
     //feito porem só mostra 2 itens, registro e nome
     //precisa ser criado um novo metodo para listar TODOS os dados e setar nos campos da tela
     public List<Funcionario> selecionar() {
-        String sql = "SELECT numRegistro, nome FROM funcionario ORDER BY nome"; //alterar tabela e atributos
+        String sql = "SELECT f.numRegistro, f.nome FROM funcionario f "
+                + "JOIN setor s ON s.codSetor = f.codSetor"
+                + "JOIN funcao fu ON fu.codFuncao = f.codFuncao ORDER BY nome"; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();

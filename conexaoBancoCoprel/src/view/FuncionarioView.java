@@ -23,6 +23,8 @@ public class FuncionarioView extends javax.swing.JDialog {
         
         FuncionarioController.atualizaTabela(tabelaFuncionario); //alterar
         FuncionarioController.limparCampos(this); //alterar
+        FuncionarioController.AtualizaComboBoxFuncao(cbFuncao);
+        FuncionarioController.AtualizaComboBoxSetor(cbSetor);
     }
 
     /**
@@ -58,10 +60,10 @@ public class FuncionarioView extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtfSetor = new javax.swing.JTextField();
-        jtfFuncao = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jtfSenha = new javax.swing.JTextField();
+        cbFuncao = new javax.swing.JComboBox<>();
+        cbSetor = new javax.swing.JComboBox<>();
         jbtExcluir = new javax.swing.JButton();
         jbtAlterar = new javax.swing.JButton();
         jbtAdicionar = new javax.swing.JButton();
@@ -160,13 +162,21 @@ public class FuncionarioView extends javax.swing.JDialog {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/user2.png"))); // NOI18N
 
-        jtfFuncao.addActionListener(new java.awt.event.ActionListener() {
+        jLabel14.setText("Senha:");
+
+        cbFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione..." }));
+        cbFuncao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfFuncaoActionPerformed(evt);
+                cbFuncaoActionPerformed(evt);
             }
         });
 
-        jLabel14.setText("Senha:");
+        cbSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione..." }));
+        cbSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSetorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,7 +205,6 @@ public class FuncionarioView extends javax.swing.JDialog {
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfSetor, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtfNome)
                             .addComponent(jtfDataNascimento)
                             .addComponent(jtfCTPS)
@@ -204,7 +213,8 @@ public class FuncionarioView extends javax.swing.JDialog {
                             .addComponent(jtfCNH)
                             .addComponent(jtfDataAdmissao)
                             .addComponent(jtfSenha)
-                            .addComponent(jtfFuncao)))
+                            .addComponent(cbFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbSetor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(9, 9, 9)
@@ -251,13 +261,13 @@ public class FuncionarioView extends javax.swing.JDialog {
                             .addComponent(jLabel11)
                             .addComponent(jtfDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jtfSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
-                            .addComponent(jtfFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
@@ -380,7 +390,7 @@ public class FuncionarioView extends javax.swing.JDialog {
                     .addComponent(jbtExcluir))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -421,13 +431,19 @@ public class FuncionarioView extends javax.swing.JDialog {
         FuncionarioController.atualizaCampos(this);
     }//GEN-LAST:event_tabelaFuncionarioMouseClicked
 
-    private void jtfFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFuncaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfFuncaoActionPerformed
-
     private void jtfNumeroRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumeroRegistroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNumeroRegistroActionPerformed
+
+    private void cbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSetorActionPerformed
+        // TODO add your handling code here:
+        FuncionarioController.AtualizaComboBoxSetor(cbSetor);
+    }//GEN-LAST:event_cbSetorActionPerformed
+
+    private void cbFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncaoActionPerformed
+        // TODO add your handling code here:
+        FuncionarioController.AtualizaComboBoxFuncao(cbFuncao);
+    }//GEN-LAST:event_cbFuncaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -488,6 +504,8 @@ public class FuncionarioView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> cbFuncao;
+    public javax.swing.JComboBox<Object> cbSetor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -516,12 +534,10 @@ public class FuncionarioView extends javax.swing.JDialog {
     public javax.swing.JTextField jtfCTPS;
     public javax.swing.JFormattedTextField jtfDataAdmissao;
     public javax.swing.JFormattedTextField jtfDataNascimento;
-    public javax.swing.JTextField jtfFuncao;
     public javax.swing.JTextField jtfNome;
     public javax.swing.JTextField jtfNumeroRegistro;
     public javax.swing.JTextField jtfRG;
     public javax.swing.JTextField jtfSenha;
-    public javax.swing.JTextField jtfSetor;
     public javax.swing.JTable tabelaFuncionario;
     // End of variables declaration//GEN-END:variables
 }
