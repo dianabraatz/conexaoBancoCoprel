@@ -71,14 +71,17 @@ public class LoginController {
         if(resultado == 1){ //usuário comum           
             
             UsuarioComumView obj =new UsuarioComumView();
+            UsuarioComumView obj2 = new UsuarioComumView(login);
             obj.setVisible(true);
             tela.setVisible(false);
          
         }else if(resultado == 2){  //administrador
             
             AdministradorView obj =new AdministradorView();
+            AdministradorView obj2 = new AdministradorView(login);
             obj.setVisible(true);
             tela.setVisible(false);
+            
         }
     }
     

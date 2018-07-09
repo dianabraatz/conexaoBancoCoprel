@@ -6,19 +6,25 @@
 package view;
 
 import controller.PontoController;
+import model.Funcionario;
 
 /**
  *
  * @author Charlan
  */
 public class PontoView extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PontoVieww
-     */
+    
+    static int numeroRegistro;
+    
     public PontoView() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    public PontoView(Funcionario login) {
+        numeroRegistro = login.getNumeroRegistro();
+        System.out.println(login.getNumeroRegistro());
+        
     }
 
     /**
@@ -38,6 +44,11 @@ public class PontoView extends javax.swing.JFrame {
         setAutoRequestFocus(false);
 
         jButton2.setText("Fechar ponto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Abrir ponto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +92,12 @@ public class PontoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        PontoController.abrirponto(login);
+        PontoController.abrirponto(numeroRegistro, this);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        PontoController.fecharPonto(numeroRegistro, this);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

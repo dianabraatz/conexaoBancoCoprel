@@ -6,14 +6,8 @@
 package dao;
 
 import config.Conexao;
-import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import model.Ponto;
 
 /**
  *
@@ -21,16 +15,14 @@ import model.Ponto;
  */
 public class PontoDAO {
     
-    public boolean abrirPonto(Ponto objeto) { //alterar a classe do parâmetro
+    public boolean abrirPonto(int objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO ponto (dh_inicio, cod_funcionario) VALUES ( ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO ponto (dh_inicio, numregistro) VALUES (CURRENT_TIMESTAMP, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setDate(1, new Date(new java.util.Date().getTime()));   
-            pstmt.setInt(2, objeto.getCod_funcionario());             
-    
-            pstmt.executeUpdate(); //executando
+            pstmt.setInt(1, objeto);             
+            pstmt.executeUpdate();
+            
             return true;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -38,29 +30,22 @@ public class PontoDAO {
         return false;
     }
 
-    public boolean alterar(Ponto objeto) {
+    public boolean fecharPonto(int objeto) {
         try {
-            String sql = " UPDATE ponto "
-                    + "    SET dh_inicio = ?, dh_fim = ? , cod_funcionario = ?"
-                    + "  WHERE codigo = ? "; //alterar tabela, atributos e chave primária - where a chave primaria
+            String sql = "UPDATE ponto SET dh_fim = CURRENT_TIMESTAMP WHERE dh_fim is null AND DATE(dh_inicio) = DATE(NOW()) AND numregistro = ?;"; //alterar tabela, atributos e chave primária - where a chave primaria
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-
-            //definindo as interrogações (uma linha para cada ? do SQL)
-           
-            pstmt.setDate(1, new Date(objeto.getDh_inicio().getTime()));   
-            pstmt.setDate(2, new Date(objeto.getDh_fim().getTime()));
-            pstmt.setInt(3, objeto.getCod_funcionario());
-            pstmt.setInt(4, objeto.getCodigo()); 
-
-            pstmt.executeUpdate(); //executando
+            pstmt.setInt(1, objeto);
+            pstmt.executeUpdate();
+            
             return true;
+            
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
-
+/*
     public boolean excluir(Ponto objeto) {
         try {
             String sql = " DELETE FROM ponto WHERE codigo = ? "; //alterar a tabela e a chave primária no WHERE
@@ -104,12 +89,9 @@ public class PontoDAO {
         return null;
     }
 
-    
+*/
     public static void main(String[] args) {
-        Ponto objeto = new Ponto(); //alterar
-   
-        PontoDAO dao = new PontoDAO(); //alterar
-        dao.abrirPonto(objeto); //alterar
+        
     }
     
 }
