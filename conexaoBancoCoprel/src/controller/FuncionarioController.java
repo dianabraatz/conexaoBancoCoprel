@@ -6,13 +6,19 @@
 package controller;
 
 import dao.FuncionarioDAO;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Funcao;
 import model.Funcionario;
+import model.Setor;
 import view.FuncionarioView;
 
 
@@ -29,7 +35,7 @@ public class FuncionarioController {
 
             FuncionarioDAO dao = new FuncionarioDAO(); //alterar
             List<Funcionario> objetos = dao.selecionar();
-            Object linhas[] = new Object[4]; //alterar o índice de acordo com o número de campos exibidos 
+            Object linhas[] = new Object[2]; //alterar o índice de acordo com o número de campos exibidos 
 
             if (!objetos.isEmpty()) {
                 for (Funcionario objeto : objetos) {//alterar a classe
@@ -71,40 +77,75 @@ public class FuncionarioController {
         tela.jbtAlterar.setEnabled(true);
         tela.jbtExcluir.setEnabled(true);
     }
-
+    
+    	public static Date formataData(String data) throws Exception { 
+		if (data == null || data.equals(""))
+			return null;
+        Date date = null;
+        try {
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            date = (java.util.Date)formatter.parse(data);
+        } catch (ParseException e) {            
+            throw e;
+        }
+        return date;
+	}
+    
     public static void adicionar(FuncionarioView tela) {
         //verificando se os campos estão preenchidos
         if (!verificarCampos(tela)) {
             return; //algum campo não está preenchido corretamente
         }
-
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");        
+        
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
         
         //alterar:: obtendo os valores preenchidos
         Integer numeroRegistro = Integer.parseInt(tela.jtfNumeroRegistro.getText().trim());
         String nome = tela.jtfNome.getText().trim();
         String rg = tela.jtfRG.getText().trim();
-        String cpf = tela.jtfCPF.getText().trim();
-        //Date dataNascimento = formato.parse(tela.jtfDataNascimento.getText().trim());
+        String cpf = tela.jtfCPF.getText().trim();  
         String ctps = tela.jtfCTPS.getText().trim();
-        String cnh = tela.jtfCNH.getText().trim();
-        //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());        
-
+        String cnh = tela.jtfCNH.getText().trim();   
+        String setor = tela.jtfSetor.getText().trim();
+        String funcao = tela.jtfFuncao.getText().trim();
+        String senha = tela.jtfSenha.getText().trim();
+        
+        //ERRO: PRECISA CONVERTER DE STRING PRA java.util.Date
+        //não esta convertendo a data certa que é colocada na tela
+        Date dataNascimento = null;
+        Date dataAdmissao = null;
+        try {
+            dataNascimento = formato.parse(tela.jtfDataAdmissao.getText().trim());
+            dataAdmissao = formato.parse(tela.jtfDataAdmissao.getText().trim());
+            System.out.println(dataNascimento);
+            System.out.println(dataAdmissao);
+        } catch (ParseException ex) {
+            Logger.getLogger(FuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         //alterar:: criando objeto
         Funcionario funcionario = new Funcionario();
         funcionario.setNumeroRegistro(numeroRegistro);
         funcionario.setNome(nome);
         funcionario.setRg(rg);
         funcionario.setCpf(cpf);
-        //funcionario.setDataNascimento(dataNascimento);
+        funcionario.setDataNascimento(dataNascimento);
         funcionario.setCtps(ctps);
         funcionario.setCnh(cnh);
-        //funcionario.setDataAdmissao(dataAdmissao);   
+        funcionario.setDataAdmissao(dataAdmissao);   
+        funcionario.setSenha(senha);
+        
+        Setor objSetor = new Setor();
+        objSetor.getCodSetor();
+        
+        Funcao objFuncao = new Funcao();
+        objFuncao.getCodFuncao();
         
 
         //alterar:: adicionando o objeto no banco de dados
         FuncionarioDAO dao = new FuncionarioDAO();
-        boolean resultado = dao.adicionar(funcionario);
+        boolean resultado = dao.adicionar(funcionario, objSetor, objFuncao);
         if (resultado) {
             atualizaTabela(tela.tabelaFuncionario);
             //limpa os campos e habilita/desabilita os botões

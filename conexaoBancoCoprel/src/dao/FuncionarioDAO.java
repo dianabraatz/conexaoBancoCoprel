@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Funcao;
 import model.Funcionario;
+import model.Setor;
 
 /**
  *
@@ -21,30 +23,34 @@ import model.Funcionario;
  */
 public class FuncionarioDAO {
     
-    public boolean adicionar(Funcionario objeto) { //alterar a classe do parâmetro
+    public boolean adicionar(Funcionario objFuncionario, Setor objSetor, Funcao objFuncao) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO funcionario (numeroRegistro, dataNascimento, nome, ctps, rg, cpf, cnh, dataAdmissao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
-
-            PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getNumeroRegistro()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setDate(2, new Date(objeto.getDataNascimento().getTime()));
-            //pstmt.setDate(2, objeto.getDataNascimento()); 
-            pstmt.setString(3, objeto.getNome()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setString(4, objeto.getCtps());
-            pstmt.setString(5, objeto.getRg());
-            pstmt.setString(6, objeto.getCpf()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setString(7, objeto.getCnh());
-            pstmt.setDate(8, new Date(objeto.getDataNascimento().getTime()));         
+            String sql = "INSERT INTO funcionario (numRegistro, senha, dataNascimento, nome, ctps, rg, cpf,cnh, dataAdmissao, codSetor, codFuncao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
             
-            pstmt.executeUpdate(); //executando
+            PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
+            pstmt.setInt(1, objFuncionario.getNumeroRegistro());
+            pstmt.setString(2, objFuncionario.getSenha());
+            //precisa ser convertido de java.util.date para java.util.sql
+            pstmt.setDate(3, new Date(objFuncionario.getDataNascimento().getTime()));
+            pstmt.setString(4, objFuncionario.getNome());
+            pstmt.setString(5, objFuncionario.getCtps());
+            pstmt.setString(6, objFuncionario.getRg());
+            pstmt.setString(7, objFuncionario.getCpf());
+            pstmt.setString(8, objFuncionario.getCnh());
+            //precisa ser convertido de java.util.date para java.util.sql
+            pstmt.setDate(9, new Date(objFuncionario.getDataAdmissao().getTime()));  
+            pstmt.setInt(10, objSetor.getCodSetor());
+            pstmt.setInt(11, objFuncao.getCodFuncao());
+            
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
-
+    
+    //NAO FEITO
     public boolean alterar(Funcionario objeto) {
         try {
             String sql = " UPDATE funcionario "
@@ -70,7 +76,8 @@ public class FuncionarioDAO {
         }
         return false;
     }
-
+    
+    //NAO FEITO
     public boolean excluir(Funcionario objeto) {
         try {
             String sql = " DELETE FROM funcionario WHERE numeroRegistro = ? "; //alterar a tabela e a chave primária no WHERE
@@ -86,9 +93,11 @@ public class FuncionarioDAO {
         }
         return false;
     }
-
+    
+    //feito porem só mostra 2 itens, registro e nome
+    //precisa ser criado um novo metodo para listar TODOS os dados e setar nos campos da tela
     public List<Funcionario> selecionar() {
-        String sql = "SELECT numeroRegistro, nome FROM funcionario ORDER BY nome"; //alterar tabela e atributos
+        String sql = "SELECT numRegistro, nome FROM funcionario ORDER BY nome"; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();
@@ -99,12 +108,12 @@ public class FuncionarioDAO {
                 Funcionario objeto = new Funcionario(); //alterar o nome da classe e o construtor
 
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
-                objeto.setNumeroRegistro(rs.getInt("numeroRegistro")); //alterar
+                objeto.setNumeroRegistro(rs.getInt("numRegistro")); //alterar
                 objeto.setNome(rs.getString("nome"));  //alterar
-                objeto.setRg(rs.getString("rg"));
-                objeto.setCpf(rs.getString("cpf"));
-                objeto.setDataNascimento(rs.getDate("dataNascimento"));
-                objeto.setCtps(rs.getString("ctps"));
+//                objeto.setRg(rs.getString("rg"));
+//                objeto.setCpf(rs.getString("cpf"));
+//                objeto.setDataNascimento(rs.getDate("dataNascimento"));
+//                objeto.setCtps(rs.getString("ctps"));
                 
 
                 lista.add(objeto);
@@ -173,12 +182,7 @@ public class FuncionarioDAO {
 
     //método só para testar
     public static void main(String[] args) {
-        Funcionario objeto = new Funcionario(); //alterar
-        objeto.setNome("Diana"); //alterar
-        objeto.setCpf(new String("02851371070")); //alterar - crei um objeto long
 
-        FuncionarioDAO dao = new FuncionarioDAO(); //alterar
-        dao.adicionar(objeto); //alterar
     }
     
 }

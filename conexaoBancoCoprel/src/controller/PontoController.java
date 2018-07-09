@@ -17,24 +17,23 @@ public class PontoController {
 
 
     public static void abrirponto(AdministradorView tela) {
-     
-        LocalDateTime horaLocal = LocalDateTime.now(); 
+            
+            /*É PRECISO DECIDIR COMO VAI SER A ABERTURA/CADASTRO DE PONTO:
+                CADA PONTO IRÁ TER UM CÓDIGO: CASO ELE SEJA ABERTO PELA MANHÃ/TARDE(INSERT dh_inicio), NO FIM DA MANHÃ/TARDE O PONTO DE MESMO CODIGO 
+                                                                                             TERÁ QUE SER ALTERADO E SERÁ ADICIONADO dh_final(UPDATE)
+             testa isso no bd, não consegui explicar direito
+                --ponto inicio
+                INSERT INTO ponto(dh_inicio, numregistro)VALUES(CURRENT_TIMESTAMP, 10001);
         
-        //alterar:: criando objeto
-        Ponto ponto = new Ponto();
-        //ponto.setDh_inicio(dh_inicio);
-        //reverrrrrrrrrrrrrrr
-    
-        //alterar:: adicionando o objeto no banco de dados
-        PontoDAO dao = new PontoDAO();
-        boolean resultado = dao.adicionar(ponto);
-        if (resultado) {
-            JOptionPane.showMessageDialog(tela, "Inserido com sucesso!"); //não alterar
-        } else {
-            JOptionPane.showMessageDialog(tela, "Problemas com a inserção!");
-        }
-
-    }
-   
+                --ponto fim(caso não houver a verificação no inicio do turno/ gera um novo codigo);
+                INSERT INTO ponto(dh_fim, numregistro)VALUES(CURRENT_TIMESTAMP, 10001);
+                
+                --inserir ponto fim se dh_inicio ja tiver sido inserido
+                UPDATE ponto SET dh_fim = CURRENT_TIMESTAMP WHERE dh_fim = NULL AND DATE(dh_inicio) = DATE(NOW()) AND numregistro = 10001;
+            
+                --> precisamos fazer uma verificação no banco ou aqui, não sei como pode ser
+        
+            */
+    } 
 
 }
