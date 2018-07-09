@@ -108,6 +108,12 @@ public class FuncionarioDAO {
                 Funcionario objeto = new Funcionario(); //alterar o nome da classe e o construtor
 
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
+                objeto.setNumeroRegistro(rs.getInt("numeroRegistro")); //alterar
+                objeto.setNome(rs.getString("nome"));
+                //objeto.setRg(rs.getString("rg"));
+                //objeto.setCpf(rs.getString("cpf"));
+                //objeto.setDataNascimento(rs.getDate("dataNascimento"));
+                //objeto.setCtps(rs.getString("ctps"));
                 objeto.setNumeroRegistro(rs.getInt("numRegistro")); //alterar
                 objeto.setNome(rs.getString("nome"));  //alterar
 //                objeto.setRg(rs.getString("rg"));

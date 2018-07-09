@@ -41,8 +41,7 @@ public class FuncionarioController {
                 for (Funcionario objeto : objetos) {//alterar a classe
                     //alterar definir o que vai em cada linha - 1 linha para cada atributo exibido na tabela
                     linhas[0] = objeto.getNumeroRegistro();  //alterar
-                    linhas[1] = objeto.getNome(); //alterar
-                    
+                    linhas[1] = objeto.getNome(); //alterar                    
                     
                     model.addRow(linhas);
                 }
