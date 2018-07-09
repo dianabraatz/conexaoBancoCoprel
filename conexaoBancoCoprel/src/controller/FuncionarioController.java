@@ -29,14 +29,13 @@ public class FuncionarioController {
 
             FuncionarioDAO dao = new FuncionarioDAO(); //alterar
             List<Funcionario> objetos = dao.selecionar();
-            Object linhas[] = new Object[4]; //alterar o índice de acordo com o número de campos exibidos 
+            Object linhas[] = new Object[2]; //alterar o índice de acordo com o número de campos exibidos 
 
             if (!objetos.isEmpty()) {
                 for (Funcionario objeto : objetos) {//alterar a classe
                     //alterar definir o que vai em cada linha - 1 linha para cada atributo exibido na tabela
                     linhas[0] = objeto.getNumeroRegistro();  //alterar
-                    linhas[1] = objeto.getNome(); //alterar
-                    
+                    linhas[1] = objeto.getNome(); //alterar                    
                     
                     model.addRow(linhas);
                 }
