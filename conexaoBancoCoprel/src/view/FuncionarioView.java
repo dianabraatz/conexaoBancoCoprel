@@ -12,10 +12,6 @@ import controller.FuncionarioController;
  * @author Administrador
  */
 public class FuncionarioView extends javax.swing.JDialog {
-
-    /**
-     * Creates new form Login
-     */
     
     public FuncionarioView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -437,12 +433,10 @@ public class FuncionarioView extends javax.swing.JDialog {
 
     private void cbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSetorActionPerformed
         // TODO add your handling code here:
-        FuncionarioController.AtualizaComboBoxSetor(cbSetor);
     }//GEN-LAST:event_cbSetorActionPerformed
 
     private void cbFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncaoActionPerformed
         // TODO add your handling code here:
-        FuncionarioController.AtualizaComboBoxFuncao(cbFuncao);
     }//GEN-LAST:event_cbFuncaoActionPerformed
 
     /**

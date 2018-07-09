@@ -60,7 +60,6 @@ public class FuncionarioController {
         for(Setor setor: dao.selecionar()){
             cbSetor.addItem(setor);
         }
-        cbSetor.updateUI();
     }
     
     public static void AtualizaComboBoxFuncao(JComboBox cbFuncao){
@@ -69,7 +68,6 @@ public class FuncionarioController {
         for(Funcao funcao: dao.selecionar()){
             cbFuncao.addItem(funcao);
         }
-        cbFuncao.updateUI();
     }
 
     public static void removeLinhasTabela(JTable tabelaFuncionario) {
@@ -128,7 +126,7 @@ public class FuncionarioController {
         String cnh = tela.jtfCNH.getText().trim();   
         String setor = tela.cbSetor.getSelectedItem().toString();
         String funcao = tela.cbFuncao.getSelectedItem().toString();
-        //String senha = tela.jtfSenha.getText().trim();
+        String senha = tela.jtfSenha.getText().trim();
         
         //ERRO: PRECISA CONVERTER DE STRING PRA java.util.Date
         //não esta convertendo a data certa que é colocada na tela
@@ -153,8 +151,10 @@ public class FuncionarioController {
         funcionario.setDataNascimento(dataNascimento);
         funcionario.setCtps(ctps);
         funcionario.setCnh(cnh);
-        funcionario.setDataAdmissao(dataAdmissao);   
-        //funcionario.setSenha(senha);
+        funcionario.setDataAdmissao(dataAdmissao); 
+        //funcionario.setFuncao(funcao);
+        //funcionario.setSetor(setor);
+        funcionario.setSenha(senha);
         
         Setor objSetor = new Setor();
         objSetor.getCodSetor();
@@ -190,7 +190,10 @@ public class FuncionarioController {
         String dataNascimento = tela.jtfDataNascimento.getText().trim();
         String ctps = tela.jtfCTPS.getText().trim();
         String cnh = tela.jtfCNH.getText().trim();
-        //Date dataAdmissao = formato.parse(tela.jftfDataAdmissao.getText().trim());
+        String dataAdmissao = tela.jtfDataAdmissao.getText().trim();
+        String funcao = tela.cbFuncao.getSelectedItem().toString();
+        String setor = tela.cbSetor.getSelectedItem().toString();
+        String senha = tela.jtfSenha.getText().trim();
 
         //alterar:: criando objeto
         Funcionario funcionario = new Funcionario();
@@ -201,7 +204,10 @@ public class FuncionarioController {
         funcionario.setDataNascimento(dataNascimento);
         funcionario.setCtps(ctps);
         funcionario.setCnh(cnh);
-        //funcionario.setDataAdmissao(dataAdmissao);   
+        funcionario.setDataAdmissao(dataAdmissao); 
+        //funcionario.setFuncao(funcao);
+        //funcionario.setSetor(setor);
+        funcionario.setSenha(senha);
         
         //alterar:: alterando o objeto no banco de dados
         FuncionarioDAO dao = new FuncionarioDAO(); //alterar
@@ -278,6 +284,15 @@ public class FuncionarioController {
         }else if (tela.jtfDataAdmissao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo data de admissao!");
             return false;
+        }else if (tela.cbFuncao.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(tela, "Selecione a funcao do funcionario!");
+            return false;
+        }else if (tela.cbSetor.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(tela, "Selecione o setor do funcionario!");
+            return false;
+        }else if (tela.jtfSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(tela, "Preencha o campo senha!");
+            return false;
         }else
         return true;
     }
@@ -290,13 +305,16 @@ public class FuncionarioController {
     public static void limparCampos(FuncionarioView tela) {
         //alterar:: limpando os campos
         tela.jtfNumeroRegistro.setText("");
-        tela.jtfNome.getText().trim();
-        tela.jtfRG.getText().trim();
+        tela.jtfNome.setText("");
+        tela.jtfRG.setText("");
         tela.jtfCPF.setText("");
         tela.jtfDataNascimento.setText("");
         tela.jtfCTPS.setText("");
         tela.jtfCNH.setText("");
         tela.jtfDataAdmissao.setText("");
+        tela.cbFuncao.setSelectedIndex(0);
+        tela.cbSetor.setSelectedIndex(0);
+        tela.jtfSenha.setText("");
 
         //habilitando/desabilitando os botões
         tela.jbtAdicionar.setEnabled(true);

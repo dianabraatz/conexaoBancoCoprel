@@ -25,6 +25,24 @@ public class Funcionario {
     private String ctps;
     private String cnh;
     private Date dataAdmissao;
+    private Funcao funcao;
+    private Setor setor;
+
+    public Funcao getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(Funcao funcao) {
+        this.funcao = funcao;
+    }
+
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
 
     public Integer getNumeroRegistro() {
         return numeroRegistro;

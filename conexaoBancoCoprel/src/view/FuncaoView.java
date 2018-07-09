@@ -45,7 +45,7 @@ public class FuncaoView extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jtfCodFuncao = new javax.swing.JTextField();
         jtfNome = new javax.swing.JTextField();
-        jtfNivelAcesso = new javax.swing.JTextField();
+        cbNivelAcesso = new javax.swing.JComboBox<>();
         jbtExcluir = new javax.swing.JButton();
         jbtAlterar = new javax.swing.JButton();
         jbtAdicionar = new javax.swing.JButton();
@@ -83,22 +83,24 @@ public class FuncaoView extends javax.swing.JDialog {
 
         jtfNome.setForeground(new java.awt.Color(51, 51, 51));
 
+        cbNivelAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jtfCodFuncao)
-                    .addComponent(jtfNivelAcesso))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfCodFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbNivelAcesso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +116,7 @@ public class FuncaoView extends javax.swing.JDialog {
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtfNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -349,6 +351,7 @@ public class FuncaoView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> cbNivelAcesso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -364,7 +367,6 @@ public class FuncaoView extends javax.swing.JDialog {
     public javax.swing.JButton jbtExcluir;
     public javax.swing.JButton jbtLimpar;
     public javax.swing.JTextField jtfCodFuncao;
-    public javax.swing.JTextField jtfNivelAcesso;
     public javax.swing.JTextField jtfNome;
     public javax.swing.JTable tabelaFuncao;
     // End of variables declaration//GEN-END:variables

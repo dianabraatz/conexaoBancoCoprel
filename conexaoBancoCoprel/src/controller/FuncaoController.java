@@ -7,6 +7,7 @@ package controller;
 
 import dao.FuncaoDAO;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -65,7 +66,7 @@ public class FuncaoController {
         //alterar setando os valores dos campos
         tela.jtfCodFuncao.setText(codFuncao);
         tela.jtfNome.setText(nome);
-        tela.jtfNivelAcesso.setText(nivel_acesso);
+        tela.cbNivelAcesso.setSelectedItem(nivel_acesso);
 
         // habilita/desabilita botões
         tela.jbtAdicionar.setEnabled(false);
@@ -81,7 +82,7 @@ public class FuncaoController {
 
         //alterar:: obtendo os valores preenchidos
         String nome = tela.jtfNome.getText().trim();
-        Integer nivel_acesso = Integer.parseInt(tela.jtfNivelAcesso.getText().trim());    
+        Integer nivel_acesso = Integer.parseInt(tela.cbNivelAcesso.getSelectedItem().toString());    
 
         //alterar:: criando objeto
         Funcao funcao = new Funcao();
@@ -110,7 +111,7 @@ public class FuncaoController {
         
         Integer codFuncao = Integer.parseInt(tela.jtfCodFuncao.getText().trim());
         String nome = tela.jtfNome.getText().trim();
-        Integer nivel_acesso = Integer.parseInt(tela.jtfNivelAcesso.getText().trim());    
+        Integer nivel_acesso = Integer.parseInt(tela.cbNivelAcesso.getSelectedItem().toString());    
 
         //alterar:: criando objeto
         Funcao funcao = new Funcao();
@@ -172,8 +173,8 @@ public class FuncaoController {
         if (tela.jtfNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo nome!");
             return false;
-        }else if (tela.jtfNivelAcesso.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(tela, "Preencha o campo nivel de acesso!");
+        }else if (tela.cbNivelAcesso.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(tela, "Selecione o campo de acesso!");
             return false;
         }else
         return true;
@@ -188,7 +189,7 @@ public class FuncaoController {
         //alterar:: limpando os campos
         tela.jtfCodFuncao.setText("");
         tela.jtfNome.setText("");
-        tela.jtfNivelAcesso.setText("");
+        tela.cbNivelAcesso.setSelectedIndex(0);
 
         //habilitando/desabilitando os botões
         tela.jbtAdicionar.setEnabled(true);
