@@ -5,6 +5,8 @@
  */
 package view;
 
+import controller.PontoController;
+
 /**
  *
  * @author Charlan
@@ -38,6 +40,11 @@ public class PontoView extends javax.swing.JFrame {
         jButton2.setText("Fechar ponto");
 
         jButton1.setText("Abrir ponto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastrar Ponto");
@@ -72,6 +79,11 @@ public class PontoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PontoController.abrirponto(login);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

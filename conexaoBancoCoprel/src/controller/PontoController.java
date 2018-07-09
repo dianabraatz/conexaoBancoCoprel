@@ -5,6 +5,7 @@ import dao.PontoDAO;
 import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import model.Funcionario;
 import model.Ponto;
 import view.AdministradorView;
 
@@ -16,7 +17,7 @@ import view.AdministradorView;
 public class PontoController {
 
 
-    public static void abrirponto(AdministradorView tela) {
+    public static void abrirponto(Funcionario objeto) {
             
             /*É PRECISO DECIDIR COMO VAI SER A ABERTURA/CADASTRO DE PONTO:
                 CADA PONTO IRÁ TER UM CÓDIGO: CASO ELE SEJA ABERTO PELA MANHÃ/TARDE(INSERT dh_inicio), NO FIM DA MANHÃ/TARDE O PONTO DE MESMO CODIGO 
