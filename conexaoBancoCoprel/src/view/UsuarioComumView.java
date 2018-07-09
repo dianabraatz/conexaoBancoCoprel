@@ -19,6 +19,7 @@ public class UsuarioComumView extends javax.swing.JFrame {
     public UsuarioComumView() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setTitle("Funcionário");
     }
 
     public UsuarioComumView(Funcionario login) {

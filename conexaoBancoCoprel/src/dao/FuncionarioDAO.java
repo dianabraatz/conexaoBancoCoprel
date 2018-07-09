@@ -98,7 +98,7 @@ public class FuncionarioDAO {
     //feito porem só mostra 2 itens, registro e nome
     //precisa ser criado um novo metodo para listar TODOS os dados e setar nos campos da tela
     public List<Funcionario> selecionar() {
-        String sql = "SELECT f.numregistro, f.nome FROM funcionario f "
+        String sql = "SELECT f.numregistro, f.nome, s.nome as setor, fu.nome as funcao FROM funcionario f "
                 + "JOIN setor s ON s.codSetor = f.codSetor "
                 + "JOIN funcao fu ON fu.codFuncao = f.codFuncao ORDER BY nome"; //alterar tabela e atributos
 
@@ -113,17 +113,6 @@ public class FuncionarioDAO {
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
                 objeto.setNumeroRegistro(rs.getInt("numregistro")); //alterar
                 objeto.setNome(rs.getString("nome"));
-                //objeto.setRg(rs.getString("rg"));
-                //objeto.setCpf(rs.getString("cpf"));
-                //objeto.setDataNascimento(rs.getDate("dataNascimento"));
-                //objeto.setCtps(rs.getString("ctps"));
-                objeto.setNumeroRegistro(rs.getInt("numRegistro")); //alterar
-                objeto.setNome(rs.getString("nome"));  //alterar
-//                objeto.setRg(rs.getString("rg"));
-//                objeto.setCpf(rs.getString("cpf"));
-//                objeto.setDataNascimento(rs.getDate("dataNascimento"));
-//                objeto.setCtps(rs.getString("ctps"));
-                
 
                 lista.add(objeto);
             }

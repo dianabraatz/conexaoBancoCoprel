@@ -16,7 +16,7 @@ public class FuncionarioView extends javax.swing.JDialog {
     public FuncionarioView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         FuncionarioController.atualizaTabela(tabelaFuncionario); //alterar
         FuncionarioController.limparCampos(this); //alterar
         FuncionarioController.AtualizaComboBoxFuncao(cbFuncao);
@@ -318,13 +318,13 @@ public class FuncionarioView extends javax.swing.JDialog {
         tabelaFuncionario.setForeground(new java.awt.Color(51, 51, 51));
         tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Número de Registro", "Nome", "Setor", "Funcao"
+                "Número de Registro", "Nome"
             }
         ));
         tabelaFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
