@@ -318,13 +318,13 @@ public class FuncionarioView extends javax.swing.JDialog {
         tabelaFuncionario.setForeground(new java.awt.Color(51, 51, 51));
         tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Número de Registro", "Nome"
+                "Número de Registro", "Nome", "Setor", "Funcao"
             }
         ));
         tabelaFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {

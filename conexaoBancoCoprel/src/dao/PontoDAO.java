@@ -21,17 +21,14 @@ import model.Ponto;
  */
 public class PontoDAO {
     
-    public boolean adicionar(Ponto objeto) { //alterar a classe do parâmetro
+    public boolean abrirPonto(Ponto objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO ponto (codigo, dh_inicio, cod_funcionario, dh_fim ) VALUES (?, ?, ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO ponto (dh_inicio, cod_funcionario) VALUES ( ?, ?)"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setInt(1, objeto.getCodigo()); // alterar o primeiro parâmetro indica a interrogação, começando em 1
-            pstmt.setDate(2, new Date(objeto.getDh_inicio().getTime()));   
-            pstmt.setInt(3, objeto.getCod_funcionario()); 
-            pstmt.setDate(4, new Date(objeto.getDh_fim().getTime()));
-            
+            pstmt.setDate(1, new Date(new java.util.Date().getTime()));   
+            pstmt.setInt(2, objeto.getCod_funcionario());             
     
             pstmt.executeUpdate(); //executando
             return true;
@@ -112,7 +109,7 @@ public class PontoDAO {
         Ponto objeto = new Ponto(); //alterar
    
         PontoDAO dao = new PontoDAO(); //alterar
-        dao.adicionar(objeto); //alterar
+        dao.abrirPonto(objeto); //alterar
     }
     
 }
