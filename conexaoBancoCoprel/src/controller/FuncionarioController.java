@@ -55,19 +55,21 @@ public class FuncionarioController {
     }
     
     public static void AtualizaComboBoxSetor(JComboBox cbSetor){
-        //cbSetor.removeAllItens();
+        cbSetor.removeAllItems();
         SetorDAO dao = new SetorDAO();
         for(Setor setor: dao.selecionar()){
             cbSetor.addItem(setor);
         }
+        cbSetor.updateUI();
     }
     
     public static void AtualizaComboBoxFuncao(JComboBox cbFuncao){
-        //cbFuncao.removeAllItens();
+        cbFuncao.removeAllItems();
         FuncaoDAO dao = new FuncaoDAO();
         for(Funcao funcao: dao.selecionar()){
             cbFuncao.addItem(funcao);
         }
+        cbFuncao.updateUI();
     }
 
     public static void removeLinhasTabela(JTable tabelaFuncionario) {
