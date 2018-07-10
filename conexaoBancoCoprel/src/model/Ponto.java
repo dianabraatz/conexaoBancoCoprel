@@ -20,6 +20,15 @@ public class Ponto {
     private Date dh_inicio;
     private Date dh_fim;
     private Integer cod_funcionario;
+    private String nomeFuncionario;
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -73,12 +82,10 @@ public class Ponto {
     }
     
     
+    
+    
 
 
-   
-    
-    
-    
 
     
     

@@ -24,9 +24,9 @@ public class AdministradorView extends javax.swing.JFrame {
     }
 
     public AdministradorView(Funcionario login) {
-        PontoView obj = new PontoView();
+       // PontoView obj = new PontoView();
         PontoView obj2 = new PontoView(login);
-        obj.setVisible(true);
+        obj2.setVisible(true);
         
         
     }
@@ -133,7 +133,7 @@ public class AdministradorView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jmiPonto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPonto1ActionPerformed
-        PontoView dialog = new PontoView();
+        PontoView dialog = PontoView();
         dialog.setVisible(true);
     }//GEN-LAST:event_jmiPonto1ActionPerformed
 
@@ -152,6 +152,7 @@ public class AdministradorView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdministradorView().setVisible(true);
+                
             }
         });
     }
@@ -166,6 +167,10 @@ public class AdministradorView extends javax.swing.JFrame {
     private javax.swing.JMenu jmnList;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
+
+    private PontoView PontoView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 }

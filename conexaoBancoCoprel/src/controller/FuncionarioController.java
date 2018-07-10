@@ -115,7 +115,7 @@ public class FuncionarioController {
             return; //algum campo não está preenchido corretamente
         }
         
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
         
         //alterar:: obtendo os valores preenchidos
         Integer numeroRegistro = Integer.parseInt(tela.jtfNumeroRegistro.getText().trim());
@@ -284,12 +284,13 @@ public class FuncionarioController {
         }else if (tela.jtfDataAdmissao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo data de admissao!");
             return false;
-        }else if (tela.cbFuncao.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(tela, "Selecione a funcao do funcionario!");
-            return false;
-        }else if (tela.cbSetor.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(tela, "Selecione o setor do funcionario!");
-            return false;
+//        }else if (tela.cbFuncao.getSelectedIndex() == 0) {
+//            JOptionPane.showMessageDialog(tela, "Selecione a funcao do funcionario!");
+//            return false;
+//        }else if (tela.cbSetor.getSelectedIndex() == 0) {
+//            JOptionPane.showMessageDialog(tela, "Selecione o setor do funcionario!");
+//            return false;
+//        }else 
         }else if (tela.jtfSenha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Preencha o campo senha!");
             return false;

@@ -45,6 +45,9 @@ public class PontoDAO {
         }
         return false;
     }
+    
+    
+    
 /*
     public boolean excluir(Ponto objeto) {
         try {

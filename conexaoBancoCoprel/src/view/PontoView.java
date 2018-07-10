@@ -14,7 +14,7 @@ import model.Funcionario;
  */
 public class PontoView extends javax.swing.JFrame {
     
-    static int numeroRegistro;
+     int numeroRegistro;
     
     public PontoView() {
         initComponents();
@@ -22,9 +22,10 @@ public class PontoView extends javax.swing.JFrame {
     }
 
     public PontoView(Funcionario login) {
+        initComponents();
         numeroRegistro = login.getNumeroRegistro();
-        System.out.println(login.getNumeroRegistro());
-        
+        System.out.println(login.getNumeroRegistro());  
+        this.setLocationRelativeTo(null);
     }
 
     /**
