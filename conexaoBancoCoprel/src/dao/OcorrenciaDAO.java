@@ -20,12 +20,12 @@ import model.Ocorrencia;
  */
 public class OcorrenciaDAO {
     
-    public boolean adicionar(Setor objeto) { //alterar a classe do parâmetro
+    public boolean adicionar(Ocorrencia objeto) { //alterar a classe do parâmetro
         try {
-            String sql = "INSERT INTO setor(nome) VALUES (?);"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
+            String sql = "INSERT INTO ocorrencia(justificativa) VALUES (?);"; //alterar a tabela, os atributos e o número de interrogações, conforme o número de atributos
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            pstmt.setString(1, objeto.getNomeSetor());           
+            pstmt.setString(1, objeto.getJustificativa());           
             
             pstmt.executeUpdate();
             return true;
@@ -35,7 +35,7 @@ public class OcorrenciaDAO {
         return false;
     }
 
-    public boolean alterar(Setor objeto) {
+    public boolean alterar(Ocorrencia objeto) {
         try {
             String sql = " UPDATE setor SET nome = ?  WHERE codSetor = ?;";
 
