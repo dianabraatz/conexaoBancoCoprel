@@ -37,13 +37,13 @@ public class OcorrenciaDAO {
 
     public boolean alterar(Ocorrencia objeto) {
         try {
-            String sql = " UPDATE setor SET nome = ?  WHERE codSetor = ?;";
+            String sql = " UPDATE ocorrencia SET justificativa = ?  WHERE codocorrencia = ?;";
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
 
             //definindo as interrogações (uma linha para cada ? do SQL)
-            pstmt.setString(1, objeto.getNomeSetor()); 
-            pstmt.setInt(2, objeto.getCodSetor());
+            pstmt.setString(1, objeto.getJustificativa()); 
+            pstmt.setInt(2, objeto.getCodocorrencia());
 
             pstmt.executeUpdate(); //executando
             return true;
@@ -53,12 +53,12 @@ public class OcorrenciaDAO {
         return false;
     }
 
-    public boolean excluir(Setor objeto) {
+    public boolean excluir(Ocorrencia objeto) {
         try {
-            String sql = " DELETE FROM setor WHERE codSetor = ?;"; //alterar a tabela e a chave primária no WHERE
+            String sql = " DELETE FROM ocorrencia WHERE codocorrencia = ?;"; //alterar a tabela e a chave primária no WHERE
 
             PreparedStatement pstmt = Conexao.getConexao().prepareStatement(sql);
-            pstmt.setInt(1, objeto.getCodSetor()); //alterar conforme a chave primária
+            pstmt.setInt(1, objeto.getCodocorrencia()); //alterar conforme a chave primária
 
             if (pstmt.executeUpdate() == 1) {
                 return true;
@@ -70,19 +70,19 @@ public class OcorrenciaDAO {
     }
 
     public List<Ocorrencia> selecionar() {
-        String sql = "SELECT * FROM setor"; //alterar tabela e atributos
+        String sql = "SELECT dh_inicio, dh_fim, numregistro, codigo FROM ponto WHERE numregistro  "; //alterar tabela e atributos
 
         try {
             Statement stmt = Conexao.getConexao().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            List<Setor> lista = new ArrayList<>();//alterar a classe 
+            List<Ocorrencia> lista = new ArrayList<>();//alterar a classe 
 
             while (rs.next()) {
-                Setor objeto = new Setor(); //alterar o nome da classe e o construtor
+                Ocorrencia objeto = new Ocorrencia(); //alterar o nome da classe e o construtor
 
                 //setar os atributos do objeto. Cuidar o tipo dos atributos
-                objeto.setCodSetor(rs.getInt("codSetor")); //alterar
-                objeto.setNomeSetor(rs.getString("nome"));  //alterar
+                objeto.setCodocorrencia(rs.getInt("codocorrencia")); //alterar
+                objeto.setJustificativa(rs.getString("justificativa"));  //alterar
 
                 lista.add(objeto);
             }
@@ -97,8 +97,8 @@ public class OcorrenciaDAO {
 
     //método só para testar
     public static void main(String[] args) {
-        Setor objeto = new Setor(); //alterar
-        objeto.setNomeSetor("Diana"); //alterar
+        Ocorrencia objeto = new Ocorrencia(); //alterar
+        objeto.setJustificativa("Diana"); //alterar
 
         OcorrenciaDAO dao = new OcorrenciaDAO(); //alterar
         dao.adicionar(objeto); //alterar

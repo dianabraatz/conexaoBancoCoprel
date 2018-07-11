@@ -15,12 +15,7 @@ public class Ocorrencia {
     private String status;
     private int codponto;
 
-    public Ocorrencia(int codocorrencia, String justificativa, String status, int codponto) {
-        this.codocorrencia = codocorrencia;
-        this.justificativa = justificativa;
-        this.status = status;
-        this.codponto = codponto;
-    }
+    
 
     public int getCodocorrencia() {
         return codocorrencia;
